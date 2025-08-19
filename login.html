@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Konekta | Sign In</title>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter&family=Poppins:wght@600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0A0A0A;
+      color: white;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+    }
+    h1 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      background: linear-gradient(45deg, #FF007A, #E900B5, #A200FF, #00F5FF);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: 3rem;
+      user-select: none;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <main class="max-w-md w-full bg-[#111] rounded-3xl p-8 shadow-[0_0_20px_#a200ff]">
+    <h1 class="mb-6">Konekta</h1>
+    <form id="loginForm" class="space-y-6" autocomplete="off" aria-label="Login Form">
+      <div>
+        <label for="email" class="block mb-1 font-semibold text-pink-400">Email address</label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          required
+          placeholder="you@example.com"
+          class="w-full px-4 py-3 rounded-full bg-[#222] text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-pink-500"
+          aria-required="true"
+        />
+      </div>
+
+      <div>
+        <label for="password" class="block mb-1 font-semibold text-pink-400">Password</label>
+        <input
+          id="password"
+          name="password"
+          type="password"
+          required
+          placeholder="••••••••"
+          class="w-full px-4 py-3 rounded-full bg-[#222] text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-pink-500"
+          aria-required="true"
+        />
+      </div>
+
+      <button
+        type="submit"
+        class="w-full py-3 rounded-full bg-gradient-to-r from-[#FF007A] via-[#A200FF] to-[#00F5FF] font-semibold hover:brightness-110 transition"
+      >
+        Sign In
+      </button>
+    </form>
+
+    <div class="flex items-center my-6">
+      <hr class="flex-grow border-gray-600" />
+      <span class="mx-4 text-gray-500 select-none">OR</span>
+      <hr class="flex-grow border-gray-600" />
+    </div>
+
+    <!-- Google Sign-in Button -->
+    <div
+      id="g_id_onload"
+      data-client_id="YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com"
+      data-login_uri="https://your-backend.example.com/login"
+      data-auto_prompt="false"
+      data-itp_support="true"
+    ></div>
+
+    <div
+      class="g_id_signin"
+      data-type="standard"
+      data-theme="filled_blue"
+      data-size="large"
+      data-text="signin_with"
+      data-shape="rectangular"
+      data-logo_alignment="left"
+      style="width: 100%;"
+    ></div>
+
+    <p id="errorText" class="mt-4 text-red-500 hidden" role="alert"></p>
+  </main>
+
+  <script>
+    const form = document.getElementById('loginForm');
+    const errorText = document.getElementById('errorText');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      errorText.classList.add('hidden');
+
+      const email = form.email.value.trim();
+      const password = form.password.value.trim();
+
+      if (!email || !password) {
+        errorText.textContent = 'Please fill in both email and password.';
+        errorText.classList.remove('hidden');
+        return;
+      }
+
+      // Simulate login (replace with your backend logic)
+      console.log('Login with', email, password);
+      alert(`Logged in as ${email}`);
+    });
+  </script>
+
+</body>
+</html>
