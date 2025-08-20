@@ -33,8 +33,9 @@
 </head>
 <body>
 
-  <main class="max-w-md w-full bg-[#111] rounded-3xl p-8 shadow-[0_0_20px_#a200ff]">
-    <h1 class="mb-6">Konekta</h1>
+  <main class="max-w-md w-full bg-black rounded-3xl p-8 shadow-[0_0_20px_#a200ff]">
+      <img src="image.png" alt="" class="w-3/4 ml-10 pb-4 h-auto object-cover rounded-xl" />
+    
     <form id="loginForm" class="space-y-6" autocomplete="off" aria-label="Login Form">
       <div>
         <label for="email" class="block mb-1 font-semibold text-pink-400">Email address</label>
@@ -77,14 +78,15 @@
     </div>
 
     <!-- Google Sign-in Button -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
     <div
       id="g_id_onload"
-      data-client_id="YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com"
-      data-login_uri="https://your-backend.example.com/login"
+      data-client_id="1050991664471-o53bq2g0vqjrfeui9jigrv87tobck04g.apps.googleusercontent.com"
+      data-login_uri="http://localhost:3000"
       data-auto_prompt="false"
       data-itp_support="true"
     ></div>
-
+    
     <div
       class="g_id_signin"
       data-type="standard"
@@ -95,32 +97,34 @@
       data-logo_alignment="left"
       style="width: 100%;"
     ></div>
-
+    
     <p id="errorText" class="mt-4 text-red-500 hidden" role="alert"></p>
-  </main>
-
-  <script>
-    const form = document.getElementById('loginForm');
-    const errorText = document.getElementById('errorText');
-
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      errorText.classList.add('hidden');
-
-      const email = form.email.value.trim();
-      const password = form.password.value.trim();
-
-      if (!email || !password) {
-        errorText.textContent = 'Please fill in both email and password.';
-        errorText.classList.remove('hidden');
-        return;
+    
+    <script>
+      const form = document.getElementById('loginForm');
+      const errorText = document.getElementById('errorText');
+    
+      if (form) {
+        form.addEventListener('submit', e => {
+          e.preventDefault();
+          errorText.classList.add('hidden');
+    
+          const email = form.email.value.trim();
+          const password = form.password.value.trim();
+    
+          if (!email || !password) {
+            errorText.textContent = 'Please fill in both email and password.';
+            errorText.classList.remove('hidden');
+            return;
+          }
+    
+          console.log('Login with', email, password);
+          alert(`Logged in as ${email}`);
+        });
       }
+    </script>
+    
 
-      // Simulate login (replace with your backend logic)
-      console.log('Login with', email, password);
-      alert(`Logged in as ${email}`);
-    });
-  </script>
 
 </body>
 </html>
