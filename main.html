@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Konekta | Swipe. Share. Spark.</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Inter&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0A0A0A;
+      color: white;
+      min-height: 100vh;
+      margin: 0;
+    }
+    h1, h2 {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(45deg, #FF007A, #E900B5, #A200FF, #00F5FF);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      user-select: none;
+    }
+    .neon-btn {
+      background: linear-gradient(90deg, #FF007A, #E900B5, #A200FF, #00F5FF);
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.15rem;
+      padding: 0.75rem 2rem;
+      border-radius: 9999px;
+      box-shadow: 0 4px 16px #A200FF88;
+      transition: all 0.2s ease;
+      border: none;
+      cursor: pointer;
+    }
+    .neon-btn:hover {
+      filter: brightness(1.18);
+      box-shadow: 0 6px 24px #FF007A88;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <section class="flex flex-col md:flex-row items-center justify-center px-6 py-12 md:py-24 max-w-5xl mx-auto gap-14">
+    <div class="flex-1 text-center md:text-left">
+      <h1 class="text-4xl md:text-6xl font-bold mb-4">Swipe. Share. Spark.</h1>
+      <p class="text-lg md:text-2xl text-gray-300 mb-7 max-w-md">Connect, explore, and share your college experience on Konekta. Find matches, share stories, and spark new friendships — all in one vibrant place.</p>
+      <button class="neon-btn" onclick="window.location.href='login.html'">Sign In to Get Started</button>
+    </div>
+    <div class="flex-1 flex items-center justify-center">
+      <!-- Replace this img URL with your hero image, or use one you've uploaded -->
+      <img src="img2.jpeg" alt="Konekta mockup" class="max-w-sm rounded-3xl shadow-[0_0_32px_#A200FF]" />
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="max-w-5xl mx-auto px-6 py-14 grid md:grid-cols-3 gap-10">
+    <div class="bg-[#111] rounded-2xl p-6 text-center shadow-[0_0_10px_#A200FF]">
+      <h2 class="text-xl font-bold neon-text mb-2">Stories</h2>
+      <p class="text-gray-400">Instantly share moments with scrollable stories, neon flair, and engaging updates.</p>
+    </div>
+    <div class="bg-[#111] rounded-2xl p-6 text-center shadow-[0_0_10px_#FF007A]">
+      <h2 class="text-xl font-bold neon-text mb-2">Swipe Cards</h2>
+      <p class="text-gray-400">Find new connections with swipe cards inspired by Tinder, but focused on real people and interests.</p>
+    </div>
+    <div class="bg-[#111] rounded-2xl p-6 text-center shadow-[0_0_10px_#00F5FF]">
+      <h2 class="text-xl font-bold neon-text mb-2">Chats</h2>
+      <p class="text-gray-400">Start conversations and build your college crew in a smooth, colorful chat interface.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center py-8 text-gray-600">
+    &copy; 2025 Konekta. Designed for campus connection.
+  </footer>
+
+</body>
+</html>
