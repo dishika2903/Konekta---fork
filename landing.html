@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Konekta Sidebar & Stories</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      background-color: #0A0A0A;
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      overflow: hidden;
+    }
+    .font-poppins { font-family: 'Poppins', sans-serif; }
+    aside {
+      width: 60px;
+      transition: width 0.3s ease;
+      overflow: hidden;
+      background: #121212;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 1rem;
+      gap: 1.5rem;
+      flex-shrink: 0;
+    }
+    @media (min-width: 768px) { aside:hover { width: 230px; } }
+    nav a {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1rem;
+      border-radius: 0.75rem;
+      cursor: pointer;
+      color: white;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease, justify-content 0.3s ease;
+      white-space: nowrap;
+      width: 100%;
+    }
+    @media (min-width: 768px) {
+      aside:hover nav a,
+      nav a:hover,
+      nav a.active { justify-content: flex-start; }
+    }
+    nav a svg {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      color: white;
+      margin-left: 10px;
+      margin-right: 10px;
+      transition: margin 0.3s ease;
+    }
+    @media (min-width: 768px) {
+      aside:hover nav a svg,
+      nav a:hover svg,
+      nav a.active svg { margin-left: 0; margin-right: 1rem; }
+    }
+    nav a span {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      color: white;
+      font-weight: 600;
+      flex-grow: 0;
+      max-width: 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    @media (min-width: 768px) {
+      aside:hover nav a span,
+      nav a:hover span,
+      nav a.active span { opacity: 1; max-width: 100%; }
+    }
+    nav a.active, nav a:hover {
+      background: linear-gradient(90deg, #FF007A, #E900B5, #A200FF, #00F5FF);
+      box-shadow: 0 0 6px #FF007A, 0 0 10px #E900B5, 0 0 15px #A200FF, 0 0 25px #00F5FF;
+      color: black !important;
+      font-weight: 700;
+    }
+    .profile-img {
+      width: 68px;
+      height: 68px;
+      border-radius: 9999px;
+      border: 3px solid #FF007A;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+      margin-bottom: 14px;
+    }
+    .profile-img:hover { transform: scale(1.1); }
+    .badge {
+      background: #FF007A;
+      box-shadow: 0 0 8px #FF007A;
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 9999px;
+      margin-left: 0.5rem;
+      user-select: none;
+      white-space: nowrap;
+    }
+    main {
+      flex-grow: 1;
+      background-color: #181818;
+      overflow-x: hidden;
+      overflow-y: auto;
+      padding: 1rem;
+    }
+    .stories-bar {
+      max-width: 100%;
+      overflow-x: auto;
+      white-space: nowrap;
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.2rem;
+      padding-left: 0.5rem;
+    }
+    .story-card {
+      position: relative;
+      width: 96px;
+      height: 160px;
+      border-radius: 14px;
+      overflow: hidden;
+      flex-shrink: 0;
+      box-shadow: 0 2px 10px #000000bb;
+      cursor: pointer;
+      background-color: #222;
+      user-select: none;
+    }
+    .story-card img.story-bg {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    .story-card:hover img.story-bg {
+      transform: scale(1.05);
+    }
+    .live-badge {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      background: #FF007A;
+      font-size: 11px;
+      color: white;
+      font-weight: 700;
+      padding: 0.2rem 0.5rem;
+      border-radius: 7px;
+      box-shadow: 0 0 10px #FF007A;
+      z-index: 2;
+    }
+    .user-info {
+      position: absolute;
+      bottom: 8px;
+      left: 8px;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      z-index: 2;
+    }
+    .user-info img {
+      width: 30px;
+      height: 30px;
+      border-radius: 9999px;
+      border: 2px solid #FF007A;
+      object-fit: cover;
+    }
+    .user-info span {
+      color: white;
+      font-weight: 600;
+      font-size: 14px;
+      text-shadow: 0 0 5px #000;
+      max-width: 50px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    /* Scrollbar hide */
+    .stories-bar::-webkit-scrollbar {
+      display: none;
+    }
+    .stories-bar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+
+<body>
+  <aside>
+    <!-- Profile Avatar Top -->
+    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Profile Picture" class="profile-img" />
+    <!-- Navigation -->
+    <nav class="flex flex-col gap-4 w-full font-inter">
+      <a href="#" class="nav-item flex items-center px-3 py-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l9-9 9 9v9a3 3 0 01-3 3H6a3 3 0 01-3-3z" />
+        </svg>
+        <span>Home</span>
+      </a>
+      <a href="#" class="nav-item flex items-center px-3 py-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="7" />
+          <line x1="21" y1="21" x2="16.65" y2="16.65" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        <span>Search</span>
+      </a>
+      <a href="#" class="nav-item flex items-center px-3 py-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <polygon points="12 2 19 21 12 17 5 21 12 2" />
+        </svg>
+        <span>Explore</span>
+      </a>
+      <a href="#" class="nav-item flex items-center px-3 py-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <rect x="2" y="4" width="20" height="16" rx="4" />
+          <polygon points="10 10 16 14 10 18 10 10" fill="white" />
+        </svg>
+        <span>Reels</span>
+      </a>
+      <a href="#" class="nav-item flex items-center px-3 py-2 relative">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path d="M21 15V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2z" />
+          <polyline points="3 8 12 13 21 8" />
+        </svg>
+        <span>Messages <span class="badge">8</span></span>
+      </a>
+      <a href="#" class="nav-item flex items-center px-3 py-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9" />
+          <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+        </svg>
+        <span>Notifications</span>
+      </a>
+      <a href="#" class="nav-item flex items-center px-3 py-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <rect x="4" y="4" width="16" height="16" rx="2" />
+          <line x1="12" y1="8" x2="12" y2="16" />
+          <line x1="8" y1="12" x2="16" y2="12" />
+        </svg>
+        <span>Create</span>
+      </a>
+    </nav>
+  </aside>
+
+  <main class="flex-grow bg-[#181818] p-6 overflow-auto w-full">
+    <!-- Stories bar -->
+    <div class="stories-bar">
+      <div class="story-card">
+        <img class="story-bg" src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" alt="Story 1" />
+        <span class="live-badge">LIVE</span>
+        <div class="user-info">
+          <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="User 1" />
+          <span>Laura Quinn</span>
+        </div>
+      </div>
+      <div class="story-card">
+        <img class="story-bg" src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" alt="Story 2" />
+        <div class="user-info">
+          <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User 2" />
+          <span>Michael Daws</span>
+        </div>
+      </div>
+      <div class="story-card">
+        <img class="story-bg" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Story 3" />
+        <div class="user-info">
+          <img src="https://randomuser.me/api/portraits/men/33.jpg" alt="User 3" />
+          <span>Julian Fox</span>
+        </div>
+      </div>
+      <div class="story-card">
+        <img class="story-bg" src="https://images.unsplash.com/photo-1465101178521-1e289c9c65b8?auto=format&fit=crop&w=400&q=80" alt="Story 4" />
+        <div class="user-info">
+          <img src="https://randomuser.me/api/portraits/men/34.jpg" alt="User 4" />
+          <span>Julian Fox</span>
+        </div>
+      </div>
+      <div class="story-card">
+        <img class="story-bg" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80" alt="Story 5" />
+        <div class="user-info">
+          <img src="https://randomuser.me/api/portraits/men/35.jpg" alt="User 5" />
+          <span>Julian Fox</span>
+        </div>
+      </div>
+      <div class="story-card">
+        <img class="story-bg" src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=400&q=80" alt="Story 6" />
+        <div class="user-info">
+          <img src="https://randomuser.me/api/portraits/men/36.jpg" alt="User 6" />
+          <span>Julian Fox</span>
+        </div>
+      </div>
+      <div class="story-card">
+        <img class="story-bg" src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=400&q=80" alt="Story 6" />
+        <div class="user-info">
+          <img src="https://randomuser.me/api/portraits/men/36.jpg" alt="User 6" />
+          <span>Julian Fox</span>
+        </div>
+      </div>
+      <div class="story-card">
+        <img class="story-bg" src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=400&q=80" alt="Story 6" />
+        <div class="user-info">
+          <img src="https://randomuser.me/api/portraits/men/36.jpg" alt="User 6" />
+          <span>Julian Fox</span>
+        </div>
+      </div>
+      <div class="story-card">
+        <img class="story-bg" src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=400&q=80" alt="Story 6" />
+        <div class="user-info">
+          <img src="https://randomuser.me/api/portraits/men/36.jpg" alt="User 6" />
+          <span>Julian Fox</span>
+        </div>
+      </div>
+      <div class="story-card">
+        <img class="story-bg" src="https://images.unsplash.com/photo-1489945052260-4f21c52268b8?auto=format&fit=crop&w=400&q=80" alt="Story 7" />
+        <div class="user-info">
+          <img src="https://randomuser.me/api/portraits/men/37.jpg" alt="User 7" />
+          <span>Julian Fox</span>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+
+</html>

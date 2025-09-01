@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Two-Step Sign Up | Neon Dark Mode</title>
+  
+  <!-- Google Fonts: Poppins & Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@700&display=swap" rel="stylesheet" />
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0A0A0A;
+    }
+    .font-poppins {
+      font-family: 'Poppins', sans-serif;
+    }
+  </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4">
+
+  <main class="max-w-md w-full bg-black rounded-3xl p-8 shadow-[0_0_20px_#a200ff] ">
+    
+    <h1 id="pageTitle" class="font-poppins font-bold text-4xl md:text-5xl text-center 
+      bg-gradient-to-r from-[#FF007A] via-[#E900B5] via-[#A200FF] to-[#00F5FF]
+      bg-clip-text text-transparent select-none mb-8">
+      Sign Up
+    </h1>
+
+    <!-- Step 1 Form -->
+    <form id="step1" class="space-y-6">
+      <div>
+        <label for="firstName" class="block mb-1 text-white font-semibold">First Name</label>
+        <input id="firstName" name="firstName" type="text" placeholder="Your first name" required
+          class="w-full px-4 py-3 rounded-full bg-[#222] text-white placeholder:text-gray-500 border-2 border-pink-400 focus:outline-none focus:ring-2 focus:ring-pink-400" />
+      </div>
+
+      <div>
+        <label for="lastName" class="block mb-1 text-white font-semibold">Last Name</label>
+        <input id="lastName" name="lastName" type="text" placeholder="Your last name" required
+          class="w-full px-4 py-3 rounded-full bg-[#222] text-white placeholder:text-gray-500 border-2 border-pink-400 focus:outline-none focus:ring-2 focus:ring-pink-400" />
+      </div>
+
+      <div>
+        <label for="dob" class="block mb-1 text-white font-semibold">Date of Birth</label>
+        <input id="dob" name="dob" type="date" required
+          class="w-full px-4 py-3 rounded-full bg-[#222] text-white border-2 border-pink-400 focus:outline-none focus:ring-2 focus:ring-pink-400" />
+      </div>
+
+      <div>
+        <label for="phone" class="block mb-1 text-white font-semibold">Phone Number</label>
+        <input id="phone" name="phone" type="tel" placeholder="10-digit phone number" pattern="[0-9]{10}" required
+          class="w-full px-4 py-3 rounded-full bg-[#222] text-white placeholder:text-gray-500 border-2 border-pink-400 focus:outline-none focus:ring-2 focus:ring-pink-400" />
+      </div>
+
+      <div>
+        <label for="gmail" class="block mb-1 text-white font-semibold">Gmail (for 2FA)</label>
+        <input id="gmail" name="gmail" type="email" placeholder="your@gmail.com" required
+          class="w-full px-4 py-3 rounded-full bg-[#222] text-white placeholder:text-gray-500 border-2 border-pink-400 focus:outline-none focus:ring-2 focus:ring-pink-400" />
+      </div>
+
+      <button
+        type="submit"
+        class="text-white w-full py-3 rounded-full bg-gradient-to-r from-[#FF007A] via-[#A200FF] to-[#00F5FF] font-semibold hover:brightness-110 transition"
+      >
+        Sign In
+      </button>
+    </form>
+
+    <!-- Step 2 Form (hidden initially) -->
+    <form id="step2" class="space-y-6 hidden">
+      <div>
+        <label for="username" class="block mb-1 text-white font-semibold">Username</label>
+        <input id="username" name="username" type="text" placeholder="Choose a username" required
+          class="w-full px-4 py-3 rounded-full bg-[#222] text-white placeholder:text-gray-500 border-2 border-pink-400 focus:outline-none focus:ring-2 focus:ring-pink-400" />
+      </div>
+
+      <div>
+        <label for="password" class="block mb-1 text-white font-semibold">Password</label>
+        <input id="password" name="password" type="password" placeholder="Create a password" required
+          class="w-full px-4 py-3 rounded-full bg-[#222] text-white placeholder:text-gray-500 border-2 border-pink-400 focus:outline-none focus:ring-2 focus:ring-pink-400" />
+      </div>
+
+      <button type="submit" class="w-full py-3 rounded-full font-poppins font-bold text-lg 
+        bg-gradient-to-r from-[#FF007A] via-[#A200FF] to-[#00F5FF] text-white hover:brightness-110 transition">
+        Submit
+      </button>
+    </form>
+  </main>
+
+  <script>
+    const step1 = document.getElementById('step1');
+    const step2 = document.getElementById('step2');
+    const pageTitle = document.getElementById('pageTitle');
+
+    step1.addEventListener('submit', e => {
+      e.preventDefault();
+
+      // You can add real validation or 2FA verification here before proceeding
+
+      // Hide step 1, show step 2
+      step1.classList.add('hidden');
+      step2.classList.remove('hidden');
+      pageTitle.textContent = 'Set Username & Password';
+    });
+
+    step2.addEventListener('submit', e => {
+      e.preventDefault();
+
+      // Collect all form data here or send to server as needed
+      alert('Account created successfully!');
+
+      // Optionally reset or redirect user
+      step2.reset();
+      step1.reset();
+      step2.classList.add('hidden');
+      step1.classList.remove('hidden');
+      pageTitle.textContent = 'Sign Up';
+    });
+  </script>
+
+</body>
+</html>
