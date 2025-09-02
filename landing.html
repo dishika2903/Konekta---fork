@@ -253,79 +253,119 @@
 
   <main class="flex-grow bg-[#181818] p-6 overflow-auto w-full">
     <!-- Stories bar -->
-    <div class="stories-bar">
-      <div class="story-card">
-        <img class="story-bg" src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" alt="Story 1" />
+ <!-- Stories Carousel Bar -->
+<div class="relative flex items-center w-fit">
+  <!-- Left Arrow -->
+  <button id="leftArrow" type="button"
+    class="absolute left-0 top-1/2 -translate-y-1/2 bg-gray-800/60 hover:bg-gray-900 rounded-full w-8 h-8 flex items-center justify-center z-10 text-white">
+    <svg width="22" height="22" viewBox="0 0 24 24"><path fill="none" stroke="white" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+  </button>
+  <!-- Carousel Scroll Area -->
+  <div id="carousel" class="flex gap-4 overflow-x-auto py-2 scrollbar-hide snap-x snap-mandatory w-[700px]">
+    <!-- Story Cards (example, repeat as needed) -->
+     <!-- <div class="flex flex-cols grid grid-cols-5 gap-4"> -->
+      <div class="story-card relative w-24 h-40 rounded-xl overflow-hidden bg-gray-900 shadow flex-shrink-0">
+        <img class="story-bg absolute inset-0 w-full h-full object-cover" src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" alt="Story 1" />
         <span class="live-badge">LIVE</span>
-        <div class="user-info">
-          <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="User 1" />
-          <span>Laura Quinn</span>
+        <div class="user-info absolute bottom-2 left-2 flex items-center">
+          <img src="https://randomuser.me/api/portraits/women/65.jpg" class="w-6 h-6 rounded-full border-2 border-pink-500" />
+          <span class="ml-1 text-white text-xs font-semibold">Laura Quinn</span>
         </div>
       </div>
-      <div class="story-card">
-        <img class="story-bg" src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" alt="Story 2" />
-        <div class="user-info">
-          <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User 2" />
-          <span>Michael Daws</span>
+      <div class="story-card relative w-24 h-40 rounded-xl overflow-hidden bg-gray-900 shadow flex-shrink-0">
+        <img class="story-bg absolute inset-0 w-full h-full object-cover" src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" alt="Story 2" />
+        <div class="user-info absolute bottom-2 left-2 flex items-center">
+          <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-6 h-6 rounded-full border-2 border-pink-500" />
+          <span class="ml-1 text-white text-xs font-semibold">Michael Daws</span>
         </div>
       </div>
-      <div class="story-card">
-        <img class="story-bg" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Story 3" />
-        <div class="user-info">
-          <img src="https://randomuser.me/api/portraits/men/33.jpg" alt="User 3" />
-          <span>Julian Fox</span>
+      <div class="story-card relative w-24 h-40 rounded-xl overflow-hidden bg-gray-900 shadow flex-shrink-0">
+        <img class="story-bg absolute inset-0 w-full h-full object-cover" src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" alt="Story 2" />
+        <div class="user-info absolute bottom-2 left-2 flex items-center">
+          <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-6 h-6 rounded-full border-2 border-pink-500" />
+          <span class="ml-1 text-white text-xs font-semibold">Michael Daws</span>
         </div>
       </div>
-      <div class="story-card">
-        <img class="story-bg" src="https://images.unsplash.com/photo-1465101178521-1e289c9c65b8?auto=format&fit=crop&w=400&q=80" alt="Story 4" />
-        <div class="user-info">
-          <img src="https://randomuser.me/api/portraits/men/34.jpg" alt="User 4" />
-          <span>Julian Fox</span>
+      <div class="story-card relative w-24 h-40 rounded-xl overflow-hidden bg-gray-900 shadow flex-shrink-0">
+        <img class="story-bg absolute inset-0 w-full h-full object-cover" src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" alt="Story 2" />
+        <div class="user-info absolute bottom-2 left-2 flex items-center">
+          <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-6 h-6 rounded-full border-2 border-pink-500" />
+          <span class="ml-1 text-white text-xs font-semibold">Michael Daws</span>
         </div>
       </div>
-      <div class="story-card">
-        <img class="story-bg" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80" alt="Story 5" />
-        <div class="user-info">
-          <img src="https://randomuser.me/api/portraits/men/35.jpg" alt="User 5" />
-          <span>Julian Fox</span>
+      <div class="story-card relative w-24 h-40 rounded-xl overflow-hidden bg-gray-900 shadow flex-shrink-0">
+        <img class="story-bg absolute inset-0 w-full h-full object-cover" src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" alt="Story 2" />
+        <div class="user-info absolute bottom-2 left-2 flex items-center">
+          <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-6 h-6 rounded-full border-2 border-pink-500" />
+          <span class="ml-1 text-white text-xs font-semibold">Michael Daws</span>
         </div>
       </div>
-      <div class="story-card">
-        <img class="story-bg" src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=400&q=80" alt="Story 6" />
-        <div class="user-info">
-          <img src="https://randomuser.me/api/portraits/men/36.jpg" alt="User 6" />
-          <span>Julian Fox</span>
+      <div class="story-card relative w-24 h-40 rounded-xl overflow-hidden bg-gray-900 shadow flex-shrink-0">
+        <img class="story-bg absolute inset-0 w-full h-full object-cover" src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" alt="Story 2" />
+        <div class="user-info absolute bottom-2 left-2 flex items-center">
+          <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-6 h-6 rounded-full border-2 border-pink-500" />
+          <span class="ml-1 text-white text-xs font-semibold">Michael Daws</span>
         </div>
       </div>
-      <div class="story-card">
-        <img class="story-bg" src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=400&q=80" alt="Story 6" />
-        <div class="user-info">
-          <img src="https://randomuser.me/api/portraits/men/36.jpg" alt="User 6" />
-          <span>Julian Fox</span>
+      <div class="story-card relative w-24 h-40 rounded-xl overflow-hidden bg-gray-900 shadow flex-shrink-0">
+        <img class="story-bg absolute inset-0 w-full h-full object-cover" src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" alt="Story 2" />
+        <div class="user-info absolute bottom-2 left-2 flex items-center">
+          <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-6 h-6 rounded-full border-2 border-pink-500" />
+          <span class="ml-1 text-white text-xs font-semibold">Michael Daws</span>
         </div>
       </div>
-      <div class="story-card">
-        <img class="story-bg" src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=400&q=80" alt="Story 6" />
-        <div class="user-info">
-          <img src="https://randomuser.me/api/portraits/men/36.jpg" alt="User 6" />
-          <span>Julian Fox</span>
+      <div class="story-card relative w-24 h-40 rounded-xl overflow-hidden bg-gray-900 shadow flex-shrink-0">
+        <img class="story-bg absolute inset-0 w-full h-full object-cover" src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" alt="Story 2" />
+        <div class="user-info absolute bottom-2 left-2 flex items-center">
+          <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-6 h-6 rounded-full border-2 border-pink-500" />
+          <span class="ml-1 text-white text-xs font-semibold">Michael Daws</span>
         </div>
       </div>
-      <div class="story-card">
-        <img class="story-bg" src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=400&q=80" alt="Story 6" />
-        <div class="user-info">
-          <img src="https://randomuser.me/api/portraits/men/36.jpg" alt="User 6" />
-          <span>Julian Fox</span>
+      <div class="story-card relative w-24 h-40 rounded-xl overflow-hidden bg-gray-900 shadow flex-shrink-0">
+        <img class="story-bg absolute inset-0 w-full h-full object-cover" src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" alt="Story 2" />
+        <div class="user-info absolute bottom-2 left-2 flex items-center">
+          <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-6 h-6 rounded-full border-2 border-pink-500" />
+          <span class="ml-1 text-white text-xs font-semibold">Michael Daws</span>
         </div>
       </div>
-      <div class="story-card">
-        <img class="story-bg" src="https://images.unsplash.com/photo-1489945052260-4f21c52268b8?auto=format&fit=crop&w=400&q=80" alt="Story 7" />
-        <div class="user-info">
-          <img src="https://randomuser.me/api/portraits/men/37.jpg" alt="User 7" />
-          <span>Julian Fox</span>
+      <div class="story-card relative w-24 h-40 rounded-xl overflow-hidden bg-gray-900 shadow flex-shrink-0">
+        <img class="story-bg absolute inset-0 w-full h-full object-cover" src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" alt="Story 2" />
+        <div class="user-info absolute bottom-2 left-2 flex items-center">
+          <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-6 h-6 rounded-full border-2 border-pink-500" />
+          <span class="ml-1 text-white text-xs font-semibold">Michael Daws</span>
         </div>
       </div>
-    </div>
+  
+      <div class="story-card relative w-24 h-40 rounded-xl overflow-hidden bg-gray-900 shadow flex-shrink-0">
+        <img class="story-bg absolute inset-0 w-full h-full object-cover" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Story 3" />
+        <div class="user-info absolute bottom-2 left-2 flex items-center">
+          <img src="https://randomuser.me/api/portraits/men/33.jpg" class="w-6 h-6 rounded-full border-2 border-pink-500" />
+          <span class="ml-1 text-white text-xs font-semibold">Julian Fox</span>
+        </div>
+      </div>
+      <!-- ...add more story cards as needed... -->
+    <!-- </div> -->
+     </div>
+   
+  <!-- Right Arrow -->
+  <button id="rightArrow" type="button"
+    class="absolute right-0 top-1/2 -translate-y-1/2 bg-gray-800/60 hover:bg-gray-900 rounded-full w-8 h-8 flex items-center justify-center z-10 text-white">
+    <svg width="22" height="22" viewBox="0 0 24 24"><path fill="none" stroke="white" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+  </button>
+</div>
+
+<script>
+  // Carousel arrow logic
+  const carousel = document.getElementById('carousel');
+  document.getElementById('leftArrow').onclick = () => {
+    carousel.scrollBy({left:-120,behavior:'smooth'});
+  }
+  document.getElementById('rightArrow').onclick = () => {
+    carousel.scrollBy({left:120,behavior:'smooth'});
+  }
+</script>
+
+ 
   </main>
 </body>
 
