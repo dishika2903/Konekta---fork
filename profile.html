@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Konekta Profile Page</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .heading { font-family: 'Poppins', sans-serif; }
+  </style>
+</head>
+<body class="bg-[#0A0A0A] text-white min-h-screen">
+
+  <!-- Profile Header -->
+  <section class="max-w-5xl mx-auto px-4 py-10">
+    <div class="flex flex-col md:flex-row items-center md:items-start gap-8">
+      <!-- Profile Pic -->
+      <div class="flex-shrink-0">
+        <div class="w-36 h-36 rounded-full border-4 border-transparent bg-gradient-to-r from-[#FF007A] via-[#A200FF] to-[#00F5FF] p-1 shadow-lg">
+          <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Profile"
+            class="rounded-full w-full h-full object-cover border-4 border-[#0A0A0A]" />
+        </div>
+      </div>
+
+      <!-- Profile Info -->
+      <div class="flex-1 text-center md:text-left">
+        <div class="flex flex-col md:flex-row md:items-center gap-4">
+          <h1 class="heading text-2xl font-bold text-white">jane_doe</h1>
+          <div class="flex gap-3 justify-center md:justify-start">
+            <button class="px-4 py-2 rounded-lg text-sm font-medium bg-gradient-to-r from-[#FF007A] via-[#A200FF] to-[#00F5FF] hover:opacity-90 shadow-md">
+              Follow
+            </button>
+            <button class="px-4 py-2 rounded-lg text-sm font-medium border border-[#A200FF] text-[#A200FF] hover:bg-[#A200FF] hover:text-white">
+              Message
+            </button>
+          </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="flex justify-center md:justify-start gap-8 mt-4">
+          <div><span class="heading font-bold text-lg">3</span><p class="text-gray-400 text-sm">Posts</p></div>
+          <div><span class="heading font-bold text-lg">2.3k</span><p class="text-gray-400 text-sm">Followers</p></div>
+          <div><span class="heading font-bold text-lg">580</span><p class="text-gray-400 text-sm">Following</p></div>
+        </div>
+
+        <!-- Bio -->
+        <div class="mt-4">
+          <p class="heading font-semibold">Jane Doe</p>
+          <p class="text-gray-300 text-sm">Full Stack Developer | Exploring tech & design 🚀</p>
+          <a href="#" class="text-[#00F5FF] text-sm hover:underline">konekta.dev/janedoe</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Posts Grid -->
+  <section class="max-w-5xl mx-auto px-4 pb-12">
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+      <!-- Post 1 -->
+      <div class="relative cursor-pointer" onclick="openModal(['https://images.unsplash.com/photo-1519389950473-47ba0277781c'])">
+        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c"
+             class="aspect-square object-cover rounded-lg hover:scale-105 transition-transform shadow-md" />
+      </div>
+
+      <!-- Post 2 (Multi-Image) -->
+      <div class="relative cursor-pointer" onclick="openModal([
+        'https://images.unsplash.com/photo-1498050108023-c5249f4df085',
+        'https://images.unsplash.com/photo-1556157382-97eda2d62296',
+        'https://images.unsplash.com/photo-1522202176988-66273c2fd55f'
+      ])">
+        <div class="relative overflow-hidden rounded-lg shadow-md">
+          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085"
+               class="aspect-square object-cover" />
+          <!-- Multi-image indicator -->
+          <div class="absolute top-2 right-2 bg-black/60 text-white text-sm p-1 rounded-md shadow-md">
+            <i class="fa-solid fa-clone"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Post 3 -->
+      <div class="relative cursor-pointer" onclick="openModal(['https://images.unsplash.com/photo-1518770660439-4636190af475'])">
+        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475"
+             class="aspect-square object-cover rounded-lg hover:scale-105 transition-transform shadow-md" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal -->
+  <div id="modal" class="fixed inset-0 bg-black/90 hidden flex flex-col items-center justify-center z-50 p-6">
+    <button onclick="closeModal()" class="absolute top-5 right-5 text-white text-3xl">&times;</button>
+
+    <!-- Image Viewer -->
+    <div class="relative max-w-3xl w-full flex items-center justify-center">
+      <img id="modalImage" src="" class="w-auto max-h-[70vh] object-contain rounded-lg shadow-lg mx-auto" />
+      <!-- Arrows -->
+      <button id="prevBtn" onclick="prevImage()" class="hidden absolute left-5 text-white text-4xl bg-black/60 px-3 py-1 rounded-full">&#10094;</button>
+      <button id="nextBtn" onclick="nextImage()" class="hidden absolute right-5 text-white text-4xl bg-black/60 px-3 py-1 rounded-full">&#10095;</button>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="flex gap-6 mt-4 text-2xl">
+      <i class="far fa-heart hover:text-[#FF007A] cursor-pointer"></i>
+      <i class="far fa-comment hover:text-[#00F5FF] cursor-pointer"></i>
+      <i class="far fa-paper-plane hover:text-[#A200FF] cursor-pointer"></i>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="text-center py-6 text-gray-500 text-sm">
+    © 2025 Konekta. All rights reserved.
+  </footer>
+
+  <!-- Font Awesome -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+
+  <!-- JS for modal -->
+  <script>
+    let images = [];
+    let currentIndex = 0;
+
+    function openModal(imgArray) {
+      images = imgArray;
+      currentIndex = 0;
+      document.getElementById("modal").classList.remove("hidden");
+      updateModal();
+    }
+
+    function closeModal() {
+      document.getElementById("modal").classList.add("hidden");
+    }
+
+    function updateModal() {
+      document.getElementById("modalImage").src = images[currentIndex];
+      document.getElementById("prevBtn").style.display = currentIndex > 0 ? "block" : "none";
+      document.getElementById("nextBtn").style.display = currentIndex < images.length - 1 ? "block" : "none";
+    }
+
+    function prevImage() {
+      if (currentIndex > 0) {
+        currentIndex--;
+        updateModal();
+      }
+    }
+
+    function nextImage() {
+      if (currentIndex < images.length - 1) {
+        currentIndex++;
+        updateModal();
+      }
+    }
+  </script>
+  
+</body>
+</html>
