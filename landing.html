@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Konekta Sidebar & Stories</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@700&display=swap" rel="stylesheet" />
   <style>
     body {
@@ -195,6 +196,7 @@
 </head>
 
 <body>
+
   <aside>
     <!-- Profile Avatar Top -->
     <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Profile Picture" class="profile-img" />
@@ -365,8 +367,268 @@
   }
 </script>
 
- 
+ <!-- POSTS SECTION BELOW STORIES -->
+<!-- POSTS FEED -->
+<div class="space-y-10 max-w-xl mx-14 mt-4">
+
+  <!-- ===== POST 1 ===== -->
+  <div class="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100">
+    <!-- User Info -->
+    <div class="flex items-center p-4">
+      <img src="https://randomuser.me/api/portraits/women/50.jpg" class="w-12 h-12 rounded-full border-2 border-pink-400" />
+      <div class="ml-3">
+        <div class="font-semibold text-gray-900">Anjali Mehra</div>
+        <div class="text-xs text-gray-500">1d ago</div>
+      </div>
+    </div>
+    <!-- Text -->
+    <div class="px-4 pb-3 text-gray-800 text-[15px]">
+      Had an amazing time at the <span class="font-semibold text-pink-600">Garbage Café</span> ♻️ – turning waste into meals. Inspiring concept!
+    </div>
+    <!-- Carousel -->
+    <div class="relative flex justify-center">
+      <div id="carousel1" class="relative w-96 h-80 overflow-hidden rounded-lg">
+        <div class="carousel-track flex transition-transform duration-500 ease-in-out" data-index="0">
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" class="w-96 h-80 object-cover flex-shrink-0" />
+          <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=800&q=80" class="w-96 h-80 object-cover flex-shrink-0" />
+          <img src="https://images.unsplash.com/photo-1528150177500-7e7e63368f9c?auto=format&fit=crop&w=800&q=80" class="w-96 h-80 object-cover flex-shrink-0" />
+        </div>
+      </div>
+      <button onclick="moveSlide('carousel1', -1)" class="absolute left-5 top-1/2 -translate-y-1/2 rounded-full bg-white shadow-md hover:bg-pink-500 hover:text-white p-2">‹</button>
+      <button onclick="moveSlide('carousel1', 1)" class="absolute right-5 top-1/2 -translate-y-1/2 rounded-full bg-white shadow-md hover:bg-pink-500 hover:text-white p-2">›</button>
+    </div>
+    <!-- Caption -->
+    <div class="px-4 py-3 text-gray-700 text-sm"><span class="font-semibold">Anjali Mehra</span> Sharing a moment of change 🌱</div>
+    <!-- Buttons -->
+    <div class="flex items-center justify-between px-4 py-3 border-t border-gray-100">
+      <div class="flex gap-6">
+        <button class="flex items-center gap-2 text-gray-600 hover:text-red-500">❤️ Like</button>
+        <button class="flex items-center gap-2 text-gray-600 hover:text-blue-500">💬 Comment</button>
+        <button class="flex items-center gap-2 text-gray-600 hover:text-green-500">🔗 Share</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== POST 2 ===== -->
+  <div class="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100">
+    <div class="flex items-center p-4">
+      <img src="https://randomuser.me/api/portraits/men/42.jpg" class="w-12 h-12 rounded-full border-2 border-blue-400" />
+      <div class="ml-3">
+        <div class="font-semibold text-gray-900">Rahul Sharma</div>
+        <div class="text-xs text-gray-500">2h ago</div>
+      </div>
+    </div>
+    <div class="px-4 pb-3 text-gray-800 text-[15px]">
+      Just visited <span class="font-semibold text-blue-600">Jodhpur’s Blue City</span> 🌍 – one of the most magical places I’ve ever seen!
+    </div>
+    <div class="relative flex justify-center">
+      <div id="carousel2" class="relative w-96 h-80 overflow-hidden rounded-lg">
+        <div class="carousel-track flex transition-transform duration-500 ease-in-out" data-index="0">
+          <img src="https://images.unsplash.com/photo-1465101178521-1e289c9c65b8?auto=format&fit=crop&w=800&q=80" class="w-96 h-80 object-cover flex-shrink-0" />
+          <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=800&q=80" class="w-96 h-80 object-cover flex-shrink-0" />
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" class="w-96 h-80 object-cover flex-shrink-0" />
+        </div>
+      </div>
+      <button onclick="moveSlide('carousel2', -1)" class="absolute left-5 top-1/2 -translate-y-1/2 rounded-full bg-white shadow-md hover:bg-blue-500 hover:text-white p-2">‹</button>
+      <button onclick="moveSlide('carousel2', 1)" class="absolute right-5 top-1/2 -translate-y-1/2 rounded-full bg-white shadow-md hover:bg-blue-500 hover:text-white p-2">›</button>
+    </div>
+    <div class="px-4 py-3 text-gray-700 text-sm"><span class="font-semibold">Rahul Sharma</span> Exploring the blue city 💙</div>
+    <div class="flex items-center justify-between px-4 py-3 border-t border-gray-100">
+      <div class="flex gap-6">
+        <button class="flex items-center gap-2 text-gray-600 hover:text-red-500">❤️ Like</button>
+        <button class="flex items-center gap-2 text-gray-600 hover:text-blue-500">💬 Comment</button>
+        <button class="flex items-center gap-2 text-gray-600 hover:text-green-500">🔗 Share</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== POST 3 ===== -->
+  <div class="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100">
+    <div class="flex items-center p-4">
+      <img src="https://randomuser.me/api/portraits/women/68.jpg" class="w-12 h-12 rounded-full border-2 border-green-400" />
+      <div class="ml-3">
+        <div class="font-semibold text-gray-900">Priya Nair</div>
+        <div class="text-xs text-gray-500">3h ago</div>
+      </div>
+    </div>
+    <div class="px-4 pb-3 text-gray-800 text-[15px]">
+      Hiking in the <span class="font-semibold text-green-600">Western Ghats</span> – pure bliss 🌿
+    </div>
+    <div class="relative flex justify-center">
+      <div id="carousel3" class="relative w-96 h-80 overflow-hidden rounded-lg">
+        <div class="carousel-track flex transition-transform duration-500 ease-in-out" data-index="0">
+          <img src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=800&q=80" class="w-96 h-80 object-cover flex-shrink-0" />
+          <img src="https://images.unsplash.com/photo-1482192596544-9eb780fc7f66?auto=format&fit=crop&w=800&q=80" class="w-96 h-80 object-cover flex-shrink-0" />
+          <img src="https://images.unsplash.com/photo-1523413651479-597eb2da0ad1?auto=format&fit=crop&w=800&q=80" class="w-96 h-80 object-cover flex-shrink-0" />
+        </div>
+      </div>
+      <button onclick="moveSlide('carousel3', -1)" class="absolute left-5 top-1/2 -translate-y-1/2 rounded-full bg-white shadow-md hover:bg-green-500 hover:text-white p-2">‹</button>
+      <button onclick="moveSlide('carousel3', 1)" class="absolute right-5 top-1/2 -translate-y-1/2 rounded-full bg-white shadow-md hover:bg-green-500 hover:text-white p-2">›</button>
+    </div>
+    <div class="px-4 py-3 text-gray-700 text-sm"><span class="font-semibold">Priya Nair</span> Lost in the greens 🍃</div>
+    <div class="flex items-center justify-between px-4 py-3 border-t border-gray-100">
+      <div class="flex gap-6">
+        <button class="flex items-center gap-2 text-gray-600 hover:text-red-500">❤️ Like</button>
+        <button class="flex items-center gap-2 text-gray-600 hover:text-blue-500">💬 Comment</button>
+        <button class="flex items-center gap-2 text-gray-600 hover:text-green-500">🔗 Share</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== POST 4 ===== -->
+  <div class="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100">
+    <div class="flex items-center p-4">
+      <img src="https://randomuser.me/api/portraits/men/76.jpg" class="w-12 h-12 rounded-full border-2 border-yellow-400" />
+      <div class="ml-3">
+        <div class="font-semibold text-gray-900">Aman Verma</div>
+        <div class="text-xs text-gray-500">5h ago</div>
+      </div>
+    </div>
+    <div class="px-4 pb-3 text-gray-800 text-[15px]">
+      Sunset at <span class="font-semibold text-yellow-600">Marine Drive</span> 🌅 – Mumbai vibes!
+    </div>
+    <div class="relative flex justify-center">
+      <div id="carousel4" class="relative w-96 h-80 overflow-hidden rounded-lg">
+        <div class="carousel-track flex transition-transform duration-500 ease-in-out" data-index="0">
+          <img src="https://images.unsplash.com/photo-1501973801540-537f08ccae7b?auto=format&fit=crop&w=800&q=80" class="w-96 h-80 object-cover flex-shrink-0" />
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" class="w-96 h-80 object-cover flex-shrink-0" />
+          <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=800&q=80" class="w-96 h-80 object-cover flex-shrink-0" />
+        </div>
+      </div>
+      <button onclick="moveSlide('carousel4', -1)" class="absolute left-5 top-1/2 -translate-y-1/2 rounded-full bg-white shadow-md hover:bg-yellow-500 hover:text-white p-2">‹</button>
+      <button onclick="moveSlide('carousel4', 1)" class="absolute right-5 top-1/2 -translate-y-1/2 rounded-full bg-white shadow-md hover:bg-yellow-500 hover:text-white p-2">›</button>
+    </div>
+    <div class="px-4 py-3 text-gray-700 text-sm"><span class="font-semibold">Aman Verma</span> Mumbai meri jaan 🌇</div>
+    <div class="flex items-center justify-between px-4 py-3 border-t border-gray-100">
+      <div class="flex gap-6">
+        <button class="flex items-center gap-2 text-gray-600 hover:text-red-500">❤️ Like</button>
+        <button class="flex items-center gap-2 text-gray-600 hover:text-blue-500">💬 Comment</button>
+        <button class="flex items-center gap-2 text-gray-600 hover:text-green-500">🔗 Share</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== POST 5 ===== -->
+  <div class="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100">
+    <div class="flex items-center p-4">
+      <img src="https://randomuser.me/api/portraits/women/12.jpg" class="w-12 h-12 rounded-full border-2 border-purple-400" />
+      <div class="ml-3">
+        <div class="font-semibold text-gray-900">Simran Kaur</div>
+        <div class="text-xs text-gray-500">6h ago</div>
+      </div>
+    </div>
+    <div class="px-4 pb-3 text-gray-800 text-[15px]">
+      Coffee and books 📚☕ at my favorite <span class="font-semibold text-purple-600">book café</span>.
+    </div>
+    <div class="relative flex justify-center">
+      <div id="carousel5" class="relative w-96 h-80 overflow-hidden rounded-lg">
+        <div class="carousel-track flex transition-transform duration-500 ease-in-out" data-index="0">
+          <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=800&q=80" class="w-96 h-80 object-cover flex-shrink-0" />
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" class="w-96 h-80 object-cover flex-shrink-0" />
+          <img src="https://images.unsplash.com/photo-1501973801540-537f08ccae7b?auto=format&fit=crop&w=800&q=80" class="w-96 h-80 object-cover flex-shrink-0" />
+        </div>
+      </div>
+      <button onclick="moveSlide('carousel5', -1)" class="absolute left-5 top-1/2 -translate-y-1/2 rounded-full bg-white shadow-md hover:bg-purple-500 hover:text-white p-2">‹</button>
+      <button onclick="moveSlide('carousel5', 1)" class="absolute right-5 top-1/2 -translate-y-1/2 rounded-full bg-white shadow-md hover:bg-purple-500 hover:text-white p-2">›</button>
+    </div>
+    <div class="px-4 py-3 text-gray-700 text-sm"><span class="font-semibold">Simran Kaur</span> Café vibes and cozy reads ☕📖</div>
+    <div class="flex items-center justify-between px-4 py-3 border-t border-gray-100">
+      <div class="flex gap-6">
+        <button class="flex items-center gap-2 text-gray-600 hover:text-red-500">❤️ Like</button>
+        <button class="flex items-center gap-2 text-gray-600 hover:text-blue-500">💬 Comment</button>
+        <button class="flex items-center gap-2 text-gray-600 hover:text-green-500">🔗 Share</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function moveSlide(carouselId, direction) {
+    const carousel = document.querySelector(`#${carouselId} .carousel-track`);
+    const totalSlides = carousel.children.length;
+    let currentIndex = parseInt(carousel.getAttribute("data-index")) || 0;
+    currentIndex = (currentIndex + direction + totalSlides) % totalSlides;
+    carousel.style.transform = `translateX(-${currentIndex * 24}rem)`; // 24rem = w-96
+    carousel.setAttribute("data-index", currentIndex);
+  }
+</script>
+
+
   </main>
+ <!-- ✅ Right Sidebar Activity Section (Dark Mode Style) -->
+<div class="w-auto bg-black p-5 h-screen overflow-y-auto border-l border-gray-800 hidden lg:block">
+  <!-- Header -->
+  <div class="flex items-center justify-between mb-6">
+    <h2 class="text-xl font-bold text-white">Activity</h2>
+    <button onclick="toggleDropdown()" class="relative p-2 rounded-full hover:bg-gray-800">
+      🔔
+      <span class="absolute top-1 right-1 bg-red-500 text-white text-xs w-4 h-4 flex items-center justify-center rounded-full">5</span>
+    </button>
+  </div>
+
+  <!-- Notifications -->
+  <div class="mb-8">
+    <h3 class="text-sm font-medium text-gray-400 mb-3">Notifications</h3>
+    <div class="space-y-4">
+      <div class="flex items-center gap-3">
+        <img src="https://randomuser.me/api/portraits/women/11.jpg" class="w-10 h-10 rounded-full border border-gray-700" />
+        <p class="text-sm text-white"><span class="font-semibold">Neha</span> liked your post ❤️</p>
+      </div>
+      <div class="flex items-center gap-3">
+        <img src="https://randomuser.me/api/portraits/men/40.jpg" class="w-10 h-10 rounded-full border border-gray-700" />
+        <p class="text-sm text-white"><span class="font-semibold">Rohit</span> commented: <span class="italic text-gray-300">"Nice!"</span> 💬</p>
+      </div>
+      <div class="flex items-center gap-3">
+        <img src="https://randomuser.me/api/portraits/women/55.jpg" class="w-10 h-10 rounded-full border border-gray-700" />
+        <p class="text-sm text-white"><span class="font-semibold">Aisha</span> shared your post 🔗</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Requests -->
+  <div class="mb-8">
+    <h3 class="text-sm font-medium text-gray-400 mb-3">Requests</h3>
+    <div class="space-y-4">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <img src="https://randomuser.me/api/portraits/men/22.jpg" class="w-10 h-10 rounded-full border border-gray-700" />
+          <p class="text-sm text-white"><span class="font-semibold">Arjun</span> sent a match request 💌</p>
+        </div>
+        <div class="flex gap-2">
+          <button class="px-3 py-1 rounded-lg bg-pink-600 text-white text-xs hover:bg-pink-700">Accept</button>
+          <button class="px-3 py-1 rounded-lg bg-gray-700 text-gray-200 text-xs hover:bg-gray-600">Decline</button>
+        </div>
+      </div>
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <img src="https://randomuser.me/api/portraits/women/45.jpg" class="w-10 h-10 rounded-full border border-gray-700" />
+          <p class="text-sm text-white"><span class="font-semibold">Meera</span> wants to follow you 👀</p>
+        </div>
+        <div class="flex gap-2">
+          <button class="px-3 py-1 rounded-lg bg-pink-600 text-white text-xs hover:bg-pink-700">Accept</button>
+          <button class="px-3 py-1 rounded-lg bg-gray-700 text-gray-200 text-xs hover:bg-gray-600">Decline</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Matches -->
+  <div>
+    <h3 class="text-sm font-medium text-gray-400 mb-3">Matches</h3>
+    <div class="space-y-4">
+      <div class="flex items-center gap-3">
+        <img src="https://randomuser.me/api/portraits/women/33.jpg" class="w-10 h-10 rounded-full border border-gray-700" />
+        <p class="text-sm text-white"><span class="font-semibold">Kavya</span> – matched ✅</p>
+      </div>
+      <div class="flex items-center gap-3">
+        <img src="https://randomuser.me/api/portraits/men/44.jpg" class="w-10 h-10 rounded-full border border-gray-700" />
+        <p class="text-sm text-white"><span class="font-semibold">Siddharth</span> – matched ✅</p>
+      </div>
+    </div>
+  </div>
+</div>
+
 </body>
 
 </html>
