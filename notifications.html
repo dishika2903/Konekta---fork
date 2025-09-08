@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Konekta Notifications</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      background-color: #0a0a0a;
+      font-family: "Inter", sans-serif;
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      overflow: hidden;
+    }
+    .font-poppins { font-family: "Poppins", sans-serif; }
+    aside {
+      width: 60px;
+      transition: width 0.3s ease;
+      overflow: hidden;
+      background: #121212;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 1rem;
+      gap: 1.5rem;
+      flex-shrink: 0;
+    }
+    @media (min-width: 768px) {
+      aside:hover { width: 230px; }
+    }
+    nav a {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1rem;
+      border-radius: 0.75rem;
+      cursor: pointer;
+      color: white;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease, justify-content 0.3s ease;
+      white-space: nowrap;
+      width: 100%;
+      font-weight: 600;
+      margin-bottom: 2px;
+      text-decoration: none;
+    }
+    @media (min-width: 768px) {
+      aside:hover nav a,
+      nav a:hover,
+      nav a.active {
+        justify-content: flex-start;
+      }
+      aside:hover nav a svg,
+      nav a:hover svg,
+      nav a.active svg {
+        margin-left: 0;
+        margin-right: 1rem;
+      }
+      aside:hover nav a span,
+      nav a:hover span,
+      nav a.active span {
+        opacity: 1;
+        max-width: 100%;
+      }
+    }
+    nav a svg {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      color: white;
+      margin-left: 10px;
+      margin-right: 10px;
+      transition: margin 0.3s ease;
+    }
+    nav a span {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      color: white;
+      font-weight: 600;
+      flex-grow: 0;
+      max-width: 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    nav a.active, nav a:hover {
+      background: linear-gradient(90deg, #ff007a, #e900b5, #a200ff, #00f5ff);
+      box-shadow: 0 0 6px #ff007a, 0 0 10px #e900b5, 0 0 15px #a200ff, 0 0 25px #00f5ff;
+      color: black !important;
+      font-weight: 700;
+    }
+    .profile-img {
+      width: 68px; height: 68px;
+      border-radius: 9999px; border: 3px solid #ff007a;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+      margin-bottom: 14px;
+    }
+    .profile-img:hover { transform: scale(1.1); }
+    .badge {
+      background: #ff007a; box-shadow: 0 0 8px #ff007a;
+      color: white; font-size: 0.7rem; font-weight: 700;
+      padding: 2px 8px; border-radius: 9999px; margin-left: 0.5rem;
+      user-select: none; white-space: nowrap;
+    }
+    .notif-card {
+      background: none;
+      border-radius: 13px;
+      border: 1.5px solid #232323;
+      transition: border 0.2s, box-shadow 0.2s;
+      margin-bottom: 8px;
+    }
+    .notif-card:hover {
+      border: 1.5px solid transparent;
+      border-image: linear-gradient(90deg, #ff007a 10%, #a200ff 100%);
+      border-image-slice: 1;
+      box-shadow: 0 0 17px #a200ff25, 0 0 10px #ff007a30;
+    }
+    .notif-card span,
+    .notif-card .notif-message { color: #fff !important; }
+    .profile-card {
+      background: #181818; border-radius: 13px; border: 1.5px solid #232323;
+      display: flex; align-items: center; gap: 1.1rem; padding: 1rem;
+      margin-bottom: 12px;
+    }
+    .profile-avatar { border: 2px solid #a200ff; width: 56px; height: 56px; border-radius: 50%; object-fit: cover; }
+    .recommend-btn { background: linear-gradient(90deg, #ff007a 10%, #a200ff 100%); color: white; }
+    .section-title { color: #fff; font-size: 1.32rem; font-family: "Poppins", sans-serif; font-weight: 700; margin-bottom: 2rem; }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    @media (max-width: 1024px) {
+      main { flex-direction: column !important; gap: 0.5rem !important; padding: 0.5rem !important; }
+      .main-content { width: 100% !important; max-width: 100vw !important; }
+      section { max-width: 100vw; }
+    }
+    @media (max-width: 640px) {
+      main { padding: 0 !important; }
+      .section-title { font-size: 1rem !important; margin-bottom: 1rem !important; }
+      .notif-card, .profile-card { padding: 0.5rem !important; }
+      .profile-img { width: 50px !important; height: 50px !important; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Sidebar -->
+  <aside>
+    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Profile Picture" class="profile-img" />
+    <nav class="flex flex-col gap-2 w-full font-inter">
+      <a href="#" class="nav-item flex items-center px-3 py-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M3 12l9-9 9 9v9a3 3 0 01-3 3H6a3 3 0 01-3-3z" />
+        </svg>
+        <span>Home</span>
+      </a>
+      <a href="#" class="nav-item flex items-center px-3 py-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="7" /><line x1="21" y1="21" x2="16.65"
+            y2="16.65" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        <span>Search</span>
+      </a>
+      <a href="#" class="nav-item flex items-center px-3 py-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor" stroke-width="2">
+          <polygon points="12 2 19 21 12 17 5 21 12 2" />
+        </svg>
+        <span>Explore</span>
+      </a>
+      <a href="#" class="nav-item flex items-center px-3 py-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor" stroke-width="2">
+          <rect x="2" y="4" width="20" height="16" rx="4" />
+          <polygon points="10 10 16 14 10 18 10 10" fill="white" />
+        </svg>
+        <span>Reels</span>
+      </a>
+      <a href="#" class="nav-item flex items-center px-3 py-2 relative">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor" stroke-width="2">
+          <path d="M21 15V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2z" />
+          <polyline points="3 8 12 13 21 8" />
+        </svg>
+        <span>Messages <span class="badge">8</span></span>
+      </a>
+      <a href="#" class="nav-item active flex items-center px-3 py-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor" stroke-width="2">
+          <path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9" />
+          <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+        </svg>
+        <span>Notifications</span>
+      </a>
+      <a href="#" class="nav-item flex items-center px-3 py-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor" stroke-width="2">
+          <rect x="4" y="4" width="16" height="16" rx="2" />
+          <line x1="12" y1="8" x2="12" y2="16" />
+          <line x1="8" y1="12" x2="16" y2="12" />
+        </svg>
+        <span>Create</span>
+      </a>
+    </nav>
+  </aside>
+  <!-- Main content area -->
+  <main class="flex-grow bg-[#181818] py-10 px-8 flex flex-col main-content gap-10 overflow-hidden">
+    <section class="w-full max-w-3xl mx-auto h-full overflow-y-auto no-scrollbar">
+      <div class="section-title">Recent Notifications</div>
+      <div id="merged-feed">
+        <!-- Interleaved notification and profile cards -->
+        <div class="notif-card flex items-center gap-3 px-5 py-4 mb-2">
+          <img src="https://randomuser.me/api/portraits/women/21.jpg" class="w-12 h-12 rounded-full border-2 border-[#ff007a]" />
+          <div>
+            <span class="font-semibold">Anna</span>
+            <span class="notif-message">liked your post.</span>
+            <div class="text-xs text-gray-300 mt-1">1h ago</div>
+          </div>
+        </div>
+        <div class="profile-card">
+          <img src="https://randomuser.me/api/portraits/women/68.jpg" class="profile-avatar" />
+          <div class="flex-1">
+            <div class="font-bold text-white">Sarah Johnson</div>
+            <div class="text-sm text-gray-300 mt-1">
+              Sarah is a bookworm who enjoys discussing novels and sharing new ideas with friends.
+            </div>
+          </div>
+          <button class="recommend-btn text-xs font-semibold px-4 py-2 rounded-full hover:scale-105 transition">Connect</button>
+        </div>
+        <div class="notif-card flex items-center gap-3 px-5 py-4 mb-2">
+          <img src="https://randomuser.me/api/portraits/men/41.jpg" class="w-12 h-12 rounded-full border-2 border-[#ff007a]" />
+          <div>
+            <span class="font-semibold">David</span>
+            <span class="notif-message">swiped right on your profile 💖</span>
+            <div class="text-xs text-gray-300 mt-1">2h ago</div>
+          </div>
+        </div>
+        <div class="profile-card">
+          <img src="https://randomuser.me/api/portraits/men/42.jpg" class="profile-avatar" />
+          <div class="flex-1">
+            <div class="font-bold text-white">Alex Chen</div>
+            <div class="text-sm text-gray-300 mt-1">
+              Alex loves coding, gaming, and finding new teammates to collaborate with on projects.
+            </div>
+          </div>
+          <button class="recommend-btn text-xs font-semibold px-4 py-2 rounded-full hover:scale-105 transition">Connect</button>
+        </div>
+        <div class="notif-card flex items-center gap-3 px-5 py-4 mb-2">
+          <img src="https://randomuser.me/api/portraits/women/11.jpg" class="w-12 h-12 rounded-full border-2 border-[#ff007a]" />
+          <div>
+            <span class="font-semibold">Emily</span>
+            <span class="notif-message">commented: "🔥🔥🔥"</span>
+            <div class="text-xs text-gray-300 mt-1">5h ago</div>
+          </div>
+        </div>
+        <div class="profile-card">
+          <img src="https://randomuser.me/api/portraits/women/65.jpg" class="profile-avatar" />
+          <div class="flex-1">
+            <div class="font-bold text-white">Maya Rodriguez</div>
+            <div class="text-sm text-gray-300 mt-1">
+              Maya is a talented artist who enjoys painting, photography, and creative collaborations.
+            </div>
+          </div>
+          <button class="recommend-btn text-xs font-semibold px-4 py-2 rounded-full hover:scale-105 transition">Connect</button>
+        </div>
+        <div class="notif-card flex items-center gap-3 px-5 py-4 mb-2">
+          <img src="https://randomuser.me/api/portraits/men/36.jpg" class="w-12 h-12 rounded-full border-2 border-[#ff007a]" />
+          <div>
+            <span class="font-semibold">Michael</span>
+            <span class="notif-message">started following you.</span>
+            <div class="text-xs text-gray-300 mt-1">1 day ago</div>
+          </div>
+        </div>
+        <div class="profile-card">
+          <img src="https://randomuser.me/api/portraits/men/75.jpg" class="profile-avatar" />
+          <div class="flex-1">
+            <div class="font-bold text-white">David Kim</div>
+            <div class="text-sm text-gray-300 mt-1">
+              David is a great football player who loves teamwork and hanging out with friends.
+            </div>
+          </div>
+          <button class="recommend-btn text-xs font-semibold px-4 py-2 rounded-full hover:scale-105 transition">Connect</button>
+        </div>
+        <div class="notif-card flex items-center gap-3 px-5 py-4 mb-2">
+          <img src="https://randomuser.me/api/portraits/women/32.jpg" class="w-12 h-12 rounded-full border-2 border-[#ff007a]" />
+          <div>
+            <span class="font-semibold">Laura</span>
+            <span class="notif-message">shared your story.</span>
+            <div class="text-xs text-gray-300 mt-1">2 days ago</div>
+          </div>
+        </div>
+        <div class="profile-card">
+          <img src="https://randomuser.me/api/portraits/women/23.jpg" class="profile-avatar" />
+          <div class="flex-1">
+            <div class="font-bold text-white">Emma Wilson</div>
+            <div class="text-sm text-gray-300 mt-1">
+              Emma is a science enthusiast who enjoys hiking, stargazing, and deep conversations.
+            </div>
+          </div>
+          <button class="recommend-btn text-xs font-semibold px-4 py-2 rounded-full hover:scale-105 transition">Connect</button>
+        </div>
+        <div class="notif-card flex items-center gap-3 px-5 py-4 mb-2">
+          <img src="https://randomuser.me/api/portraits/men/12.jpg" class="w-12 h-12 rounded-full border-2 border-[#ff007a]" />
+          <div>
+            <span class="font-semibold">James</span>
+            <span class="notif-message">mentioned you in a comment.</span>
+            <div class="text-xs text-gray-300 mt-1">2 days ago</div>
+          </div>
+        </div>
+        <div class="profile-card">
+          <img src="https://randomuser.me/api/portraits/women/68.jpg" class="profile-avatar" />
+          <div class="flex-1">
+            <div class="font-bold text-white">Sarah Johnson</div>
+            <div class="text-sm text-gray-300 mt-1">
+              Sarah is a bookworm who enjoys discussing novels and sharing new ideas with friends.
+            </div>
+          </div>
+          <button class="recommend-btn text-xs font-semibold px-4 py-2 rounded-full hover:scale-105 transition">Connect</button>
+        </div>
+        <div class="notif-card flex items-center gap-3 px-5 py-4 mb-2">
+          <img src="https://randomuser.me/api/portraits/men/12.jpg" class="w-12 h-12 rounded-full border-2 border-[#ff007a]" />
+          <div>
+            <span class="font-semibold">James</span>
+            <span class="notif-message">added you in a story.</span>
+            <div class="text-xs text-gray-300 mt-1">2 days ago</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
