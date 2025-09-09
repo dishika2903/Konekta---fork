@@ -32,7 +32,7 @@
   </style>
 </head>
 <body>
-
+  
   <main class="max-w-md w-full bg-black rounded-3xl p-8 shadow-[0_0_20px_#a200ff]">
     <h1 id="pageTitle" class="font-poppins font-bold text-4xl md:text-5xl text-center 
     bg-gradient-to-r from-[#FF007A] via-[#E900B5] via-[#A200FF] to-[#00F5FF]
@@ -67,13 +67,12 @@
         />
       </div>
 
-      <button
-        type="submit"
-        class="w-full py-3 rounded-full bg-gradient-to-r from-[#FF007A] via-[#A200FF] to-[#00F5FF] font-semibold hover:brightness-110 transition"
-      >
-      Log-In
-      </button>
-    </form>
+    <button
+  type="submit"
+  class="w-full py-3 rounded-full bg-gradient-to-r from-[#FF007A] via-[#A200FF] to-[#00F5FF] font-semibold hover:brightness-110 transition">
+  Log-In
+</button>
+</form>
 
     <div class="flex items-center my-6">
       <hr class="flex-grow border-gray-600" />
@@ -106,26 +105,26 @@
     
     <script>
       const form = document.getElementById('loginForm');
-      const errorText = document.getElementById('errorText');
-    
-      if (form) {
-        form.addEventListener('submit', e => {
-          e.preventDefault();
-          errorText.classList.add('hidden');
-    
-          const email = form.email.value.trim();
-          const password = form.password.value.trim();
-    
-          if (!email || !password) {
-            errorText.textContent = 'Please fill in both email and password.';
-            errorText.classList.remove('hidden');
-            return;
-          }
-    
-          console.log('Login with', email, password);
-          alert(`Logged in as ${email}`);
-        });
-      }
+const errorText = document.getElementById('errorText');
+
+if (form) {
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    errorText.classList.add('hidden');
+
+    const email = form.email.value.trim();
+    const password = form.password.value.trim();
+
+    if (!email || !password) {
+      errorText.textContent = 'Please fill in both email and password.';
+      errorText.classList.remove('hidden');
+      return;
+    }
+
+    window.location.href = "landing.html";
+  });
+}
+
     </script>
     
 
