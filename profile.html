@@ -1,157 +1,460 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Konekta Profile Page</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
-  <style>
-    body { font-family: 'Inter', sans-serif; }
-    .heading { font-family: 'Poppins', sans-serif; }
-  </style>
-</head>
-<body class="bg-[#0A0A0A] text-white min-h-screen">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Konekta Profile Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <style>
+      body {
+        background-color: #0a0a0a;
+        font-family: "Inter", sans-serif;
+        margin: 0;
+        min-height: 100vh;
+        height: 100vh;
+        display: flex;
+        overflow: hidden;
+      }
+      .font-poppins {
+        font-family: "Poppins", sans-serif;
+      }
+      aside {
+        width: 60px;
+        transition: width 0.3s ease;
+        overflow: hidden;
+        background: #121212;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 1rem;
+        gap: 1.5rem;
+        flex-shrink: 0;
+      }
+      @media (min-width: 768px) {
+        aside:hover {
+          width: 230px;
+        }
+      }
+      nav a {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.75rem 1rem;
+        border-radius: 0.75rem;
+        cursor: pointer;
+        color: white;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease,
+          justify-content 0.3s ease;
+        white-space: nowrap;
+        width: 100%;
+      }
+      @media (min-width: 768px) {
+        aside:hover nav a,
+        nav a:hover,
+        nav a.active {
+          justify-content: flex-start;
+        }
+      }
+      nav a svg {
+        flex-shrink: 0;
+        width: 28px;
+        height: 28px;
+        color: white;
+        margin-left: 10px;
+        margin-right: 10px;
+        transition: margin 0.3s ease;
+      }
+      @media (min-width: 768px) {
+        aside:hover nav a svg,
+        nav a:hover svg,
+        nav a.active svg {
+          margin-left: 0;
+          margin-right: 1rem;
+        }
+      }
+      nav a span {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        color: white;
+        font-weight: 600;
+        flex-grow: 0;
+        max-width: 0;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+      @media (min-width: 768px) {
+        aside:hover nav a span,
+        nav a:hover span,
+        nav a.active span {
+          opacity: 1;
+          max-width: 100%;
+        }
+      }
+      nav a.active,
+      nav a:hover {
+        background: linear-gradient(90deg, #ff007a, #e900b5, #a200ff, #00f5ff);
+        box-shadow: 0 0 6px #ff007a, 0 0 10px #e900b5, 0 0 15px #a200ff,
+          0 0 25px #00f5ff;
+        color: black !important;
+        font-weight: 700;
+      }
+      .profile-img {
+        width: 68px;
+        height: 68px;
+        border-radius: 9999px;
+        border: 3px solid #ff007a;
+        transition: transform 0.3s ease;
+        cursor: pointer;
+        margin-bottom: 14px;
+      }
+      .profile-img:hover {
+        transform: scale(1.1);
+      }
+      .badge {
+        background: #ff007a;
+        box-shadow: 0 0 8px #ff007a;
+        color: white;
+        font-size: 0.7rem;
+        font-weight: 700;
+        padding: 2px 8px;
+        border-radius: 9999px;
+        margin-left: 0.5rem;
+        user-select: none;
+        white-space: nowrap;
+      }
+      .heading {
+        font-family: "Poppins", sans-serif;
+      }
+    </style>
+  </head>
+  <body class="bg-[#0A0A0A] text-white min-h-screen flex">
+    <!-- Sidebar (Aside) -->
+    <aside>
+      <!-- Profile Avatar Top -->
+      <!-- <a href="profile.html"
+        ><img
+          src="https://randomuser.me/api/portraits/women/44.jpg"
+          alt="Profile Picture"
+          class="profile-img"
+      /></a> -->
+      <nav class="flex flex-col gap-4 w-full font-inter">
+        <a href="landing.html" class="nav-item flex items-center px-3 py-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3 12l9-9 9 9v9a3 3 0 01-3 3H6a3 3 0 01-3-3z"
+            />
+          </svg>
+          <span>Home</span>
+        </a>
+        <a href="#" class="nav-item flex items-center px-3 py-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <circle cx="11" cy="11" r="7" />
+            <line
+              x1="21"
+              y1="21"
+              x2="16.65"
+              y2="16.65"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <span>Search</span>
+        </a>
+        <a href="#" class="nav-item flex items-center px-3 py-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <polygon points="12 2 19 21 12 17 5 21 12 2" />
+          </svg>
+          <span>Explore</span>
+        </a>
+        <a href="#" class="nav-item flex items-center px-3 py-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <rect x="2" y="4" width="20" height="16" rx="4" />
+            <polygon points="10 10 16 14 10 18 10 10" fill="white" />
+          </svg>
+          <span>Reels</span>
+        </a>
+        <a href="#" class="nav-item flex items-center px-3 py-2 relative">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              d="M21 15V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2z"
+            />
+            <polyline points="3 8 12 13 21 8" />
+          </svg>
+          <span>Messages <span class="badge">8</span></span>
+        </a>
+        <a
+          href="notifications.html"
+          class="nav-item flex items-center px-3 py-2"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9" />
+            <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+          </svg>
+          <span>Notifications</span>
+        </a>
+        <a href="#" class="nav-item flex items-center px-3 py-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <rect x="4" y="4" width="16" height="16" rx="2" />
+            <line x1="12" y1="8" x2="12" y2="16" />
+            <line x1="8" y1="12" x2="16" y2="12" />
+          </svg>
+          <span>Create</span>
+        </a>
+      </nav>
+    </aside>
 
-  <!-- Profile Header -->
-  <section class="max-w-5xl mx-auto px-4 py-10">
-    <div class="flex flex-col md:flex-row items-center md:items-start gap-8">
-      <!-- Profile Pic -->
-      <div class="flex-shrink-0">
-        <div class="w-36 h-36 rounded-full border-4 border-transparent bg-gradient-to-r from-[#FF007A] via-[#A200FF] to-[#00F5FF] p-1 shadow-lg">
-          <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Profile"
-            class="rounded-full w-full h-full object-cover border-4 border-[#0A0A0A]" />
-        </div>
-      </div>
-
-      <!-- Profile Info -->
-      <div class="flex-1 text-center md:text-left">
-        <div class="flex flex-col md:flex-row md:items-center gap-4">
-          <h1 class="heading text-2xl font-bold text-white">jane_doe</h1>
-          <div class="flex gap-3 justify-center md:justify-start">
-            <button class="px-4 py-2 rounded-lg text-sm font-medium bg-gradient-to-r from-[#FF007A] via-[#A200FF] to-[#00F5FF] hover:opacity-90 shadow-md">
-              Follow
-            </button>
-            <button class="px-4 py-2 rounded-lg text-sm font-medium border border-[#A200FF] text-[#A200FF] hover:bg-[#A200FF] hover:text-white">
-              Message
-            </button>
+    <!-- MAIN PROFILE PAGE CONTENT -->
+    <main class="flex-1 overflow-auto">
+      <!-- Profile Header -->
+      <section class="max-w-5xl mx-auto px-4 py-10">
+        <div
+          class="flex flex-col md:flex-row items-center md:items-start gap-8"
+        >
+          <!-- Profile Pic -->
+          <div class="flex-shrink-0">
+            <div
+              class="w-36 h-36 rounded-full border-4 border-transparent bg-gradient-to-r from-[#FF007A] via-[#A200FF] to-[#00F5FF] p-1 shadow-lg"
+            >
+              <img
+                src="https://randomuser.me/api/portraits/women/44.jpg"
+                alt="Profile"
+                class="rounded-full w-full h-full object-cover border-4 border-[#0A0A0A]"
+              />
+            </div>
+          </div>
+          <!-- Profile Info -->
+          <div class="flex-1 text-center md:text-left">
+            <div class="flex flex-col md:flex-row md:items-center gap-4">
+              <h1 class="heading text-2xl font-bold text-white">jane_doe</h1>
+              <div class="flex gap-3 justify-center md:justify-start">
+                <button
+                  class="px-4 py-2 rounded-lg text-sm font-medium bg-gradient-to-r from-[#FF007A] via-[#A200FF] to-[#00F5FF] hover:opacity-90 shadow-md"
+                >
+                  Follow
+                </button>
+                <button
+                  class="px-4 py-2 rounded-lg text-sm font-medium border border-[#A200FF] text-[#A200FF] hover:bg-[#A200FF] hover:text-white"
+                >
+                  Message
+                </button>
+              </div>
+            </div>
+            <!-- Stats -->
+            <div class="flex justify-center md:justify-start gap-8 mt-4">
+              <div>
+                <span class="heading font-bold text-lg">3</span>
+                <p class="text-gray-400 text-sm">Posts</p>
+              </div>
+              <div>
+                <span class="heading font-bold text-lg">2.3k</span>
+                <p class="text-gray-400 text-sm">Followers</p>
+              </div>
+              <div>
+                <span class="heading font-bold text-lg">580</span>
+                <p class="text-gray-400 text-sm">Following</p>
+              </div>
+            </div>
+            <!-- Bio -->
+            <div class="mt-4">
+              <p class="heading font-semibold">Jane Doe</p>
+              <p class="text-gray-300 text-sm">
+                Full Stack Developer | Exploring tech & design 🚀
+              </p>
+              <a href="#" class="text-[#00F5FF] text-sm hover:underline"
+                >konekta.dev/janedoe</a
+              >
+            </div>
           </div>
         </div>
+      </section>
 
-        <!-- Stats -->
-        <div class="flex justify-center md:justify-start gap-8 mt-4">
-          <div><span class="heading font-bold text-lg">3</span><p class="text-gray-400 text-sm">Posts</p></div>
-          <div><span class="heading font-bold text-lg">2.3k</span><p class="text-gray-400 text-sm">Followers</p></div>
-          <div><span class="heading font-bold text-lg">580</span><p class="text-gray-400 text-sm">Following</p></div>
-        </div>
-
-        <!-- Bio -->
-        <div class="mt-4">
-          <p class="heading font-semibold">Jane Doe</p>
-          <p class="text-gray-300 text-sm">Full Stack Developer | Exploring tech & design 🚀</p>
-          <a href="#" class="text-[#00F5FF] text-sm hover:underline">konekta.dev/janedoe</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Posts Grid -->
-  <section class="max-w-5xl mx-auto px-4 pb-12">
-    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
-      <!-- Post 1 -->
-      <div class="relative cursor-pointer" onclick="openModal(['https://images.unsplash.com/photo-1519389950473-47ba0277781c'])">
-        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c"
-             class="aspect-square object-cover rounded-lg hover:scale-105 transition-transform shadow-md" />
-      </div>
-
-      <!-- Post 2 (Multi-Image) -->
-      <div class="relative cursor-pointer" onclick="openModal([
-        'https://images.unsplash.com/photo-1498050108023-c5249f4df085',
-        'https://images.unsplash.com/photo-1556157382-97eda2d62296',
-        'https://images.unsplash.com/photo-1522202176988-66273c2fd55f'
-      ])">
-        <div class="relative overflow-hidden rounded-lg shadow-md">
-          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085"
-               class="aspect-square object-cover" />
-          <!-- Multi-image indicator -->
-          <div class="absolute top-2 right-2 bg-black/60 text-white text-sm p-1 rounded-md shadow-md">
-            <i class="fa-solid fa-clone"></i>
+      <!-- Posts Grid -->
+      <section class="max-w-5xl mx-auto px-4 pb-12">
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+          <!-- Post 1 -->
+          <div
+            class="relative cursor-pointer"
+            onclick="openModal(['https://images.unsplash.com/photo-1519389950473-47ba0277781c'])"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1519389950473-47ba0277781c"
+              class="aspect-square object-cover rounded-lg hover:scale-105 transition-transform shadow-md"
+            />
+          </div>
+          <!-- Post 2 (Multi-Image) -->
+          <div
+            class="relative cursor-pointer"
+            onclick="openModal([
+          'https://images.unsplash.com/photo-1498050108023-c5249f4df085',
+          'https://images.unsplash.com/photo-1556157382-97eda2d62296',
+          'https://images.unsplash.com/photo-1522202176988-66273c2fd55f'
+        ])"
+          >
+            <div class="relative overflow-hidden rounded-lg shadow-md">
+              <img
+                src="https://images.unsplash.com/photo-1498050108023-c5249f4df085"
+                class="aspect-square object-cover"
+              />
+              <!-- Multi-image indicator -->
+              <div
+                class="absolute top-2 right-2 bg-black/60 text-white text-sm p-1 rounded-md shadow-md"
+              >
+                <i class="fa-solid fa-clone"></i>
+              </div>
+            </div>
+          </div>
+          <!-- Post 3 -->
+          <div
+            class="relative cursor-pointer"
+            onclick="openModal(['https://images.unsplash.com/photo-1518770660439-4636190af475'])"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1518770660439-4636190af475"
+              class="aspect-square object-cover rounded-lg hover:scale-105 transition-transform shadow-md"
+            />
           </div>
         </div>
+      </section>
+
+      <!-- Modal -->
+      <div
+        id="modal"
+        class="fixed inset-0 bg-black/90 hidden flex flex-col items-center justify-center z-50 p-6"
+      >
+        <button
+          onclick="closeModal()"
+          class="absolute top-5 right-5 text-white text-3xl"
+        >
+          &times;
+        </button>
+        <!-- Image Viewer -->
+        <div class="relative max-w-3xl w-full flex items-center justify-center">
+          <img
+            id="modalImage"
+            src=""
+            class="w-auto max-h-[70vh] object-contain rounded-lg shadow-lg mx-auto"
+          />
+          <!-- Arrows -->
+          <button
+            id="prevBtn"
+            onclick="prevImage()"
+            class="hidden absolute left-5 text-white text-4xl bg-black/60 px-3 py-1 rounded-full"
+          >
+            &#10094;
+          </button>
+          <button
+            id="nextBtn"
+            onclick="nextImage()"
+            class="hidden absolute right-5 text-white text-4xl bg-black/60 px-3 py-1 rounded-full"
+          >
+            &#10095;
+          </button>
+        </div>
+        <!-- Action Buttons -->
+        <div class="flex gap-6 mt-4 text-2xl">
+          <i class="far fa-heart hover:text-[#FF007A] cursor-pointer"></i>
+          <i class="far fa-comment hover:text-[#00F5FF] cursor-pointer"></i>
+          <i class="far fa-paper-plane hover:text-[#A200FF] cursor-pointer"></i>
+        </div>
       </div>
 
-      <!-- Post 3 -->
-      <div class="relative cursor-pointer" onclick="openModal(['https://images.unsplash.com/photo-1518770660439-4636190af475'])">
-        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475"
-             class="aspect-square object-cover rounded-lg hover:scale-105 transition-transform shadow-md" />
-      </div>
-    </div>
-  </section>
+      <!-- Footer -->
+      <footer class="text-center py-6 text-gray-500 text-sm">
+        © 2025 Konekta. All rights reserved.
+      </footer>
+    </main>
 
-  <!-- Modal -->
-  <div id="modal" class="fixed inset-0 bg-black/90 hidden flex flex-col items-center justify-center z-50 p-6">
-    <button onclick="closeModal()" class="absolute top-5 right-5 text-white text-3xl">&times;</button>
-
-    <!-- Image Viewer -->
-    <div class="relative max-w-3xl w-full flex items-center justify-center">
-      <img id="modalImage" src="" class="w-auto max-h-[70vh] object-contain rounded-lg shadow-lg mx-auto" />
-      <!-- Arrows -->
-      <button id="prevBtn" onclick="prevImage()" class="hidden absolute left-5 text-white text-4xl bg-black/60 px-3 py-1 rounded-full">&#10094;</button>
-      <button id="nextBtn" onclick="nextImage()" class="hidden absolute right-5 text-white text-4xl bg-black/60 px-3 py-1 rounded-full">&#10095;</button>
-    </div>
-
-    <!-- Action Buttons -->
-    <div class="flex gap-6 mt-4 text-2xl">
-      <i class="far fa-heart hover:text-[#FF007A] cursor-pointer"></i>
-      <i class="far fa-comment hover:text-[#00F5FF] cursor-pointer"></i>
-      <i class="far fa-paper-plane hover:text-[#A200FF] cursor-pointer"></i>
-    </div>
-  </div>
-
-  <!-- Footer -->
-  <footer class="text-center py-6 text-gray-500 text-sm">
-    © 2025 Konekta. All rights reserved.
-  </footer>
-
-  <!-- Font Awesome -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
-
-  <!-- JS for modal -->
-  <script>
-    let images = [];
-    let currentIndex = 0;
-
-    function openModal(imgArray) {
-      images = imgArray;
-      currentIndex = 0;
-      document.getElementById("modal").classList.remove("hidden");
-      updateModal();
-    }
-
-    function closeModal() {
-      document.getElementById("modal").classList.add("hidden");
-    }
-
-    function updateModal() {
-      document.getElementById("modalImage").src = images[currentIndex];
-      document.getElementById("prevBtn").style.display = currentIndex > 0 ? "block" : "none";
-      document.getElementById("nextBtn").style.display = currentIndex < images.length - 1 ? "block" : "none";
-    }
-
-    function prevImage() {
-      if (currentIndex > 0) {
-        currentIndex--;
+    <!-- Font Awesome -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- JS for modal -->
+    <script>
+      let images = [];
+      let currentIndex = 0;
+      function openModal(imgArray) {
+        images = imgArray;
+        currentIndex = 0;
+        document.getElementById("modal").classList.remove("hidden");
         updateModal();
       }
-    }
-
-    function nextImage() {
-      if (currentIndex < images.length - 1) {
-        currentIndex++;
-        updateModal();
+      function closeModal() {
+        document.getElementById("modal").classList.add("hidden");
       }
-    }
-  </script>
-  
-</body>
+      function updateModal() {
+        document.getElementById("modalImage").src = images[currentIndex];
+        document.getElementById("prevBtn").style.display =
+          currentIndex > 0 ? "block" : "none";
+        document.getElementById("nextBtn").style.display =
+          currentIndex < images.length - 1 ? "block" : "none";
+      }
+      function prevImage() {
+        if (currentIndex > 0) {
+          currentIndex--;
+          updateModal();
+        }
+      }
+      function nextImage() {
+        if (currentIndex < images.length - 1) {
+          currentIndex++;
+          updateModal();
+        }
+      }
+    </script>
+  </body>
 </html>
