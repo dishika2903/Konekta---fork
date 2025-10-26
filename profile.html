@@ -3,6 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Konekta Profile Page for jane_doe. See posts, followers, and more."
+    />
     <title>Konekta Profile Page</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
@@ -135,24 +139,77 @@
       .heading {
         font-family: "Poppins", sans-serif;
       }
+
+      /* Styles for the "Create Post" Modal */
+      #createModal {
+        display: none; /* Hidden by default */
+        position: fixed;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.9);
+        z-index: 50;
+        align-items: center;
+        justify-content: center;
+        padding: 1.5rem;
+      }
+
+      #createModal.show {
+        display: flex;
+      }
+      #formError {
+        display: none; /* Hidden by default */
+      }
+      #formError.show {
+        display: block;
+      }
+
+      /* Styles for Delete Button */
+      .post-delete-btn {
+        position: absolute;
+        top: 0.5rem;
+        left: 0.5rem;
+        background-color: rgba(0, 0, 0, 0.6);
+        color: white;
+        padding: 0.5rem;
+        border-radius: 9999px;
+        z-index: 10;
+        opacity: 0; /* Hidden by default */
+        transition: opacity 0.3s ease;
+        line-height: 1; /* Fix for icon alignment */
+      }
+      .relative:hover .post-delete-btn {
+        opacity: 1; /* Show on hover */
+      }
+      .post-delete-btn:hover {
+        color: #ff007a; /* Red on hover */
+      }
+
+      /* Style for liked button */
+      .fa-solid.text-\[\#FF007A\] {
+        color: #ff007a;
+      }
+
+      /* Style for multi-image icon */
+      .multi-image-icon {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        background-color: rgba(0, 0, 0, 0.6);
+        color: white;
+        font-size: 0.75rem; /* 12px */
+        padding: 0.25rem; /* 4px */
+        border-radius: 0.375rem; /* 6px */
+        z-index: 10;
+      }
     </style>
   </head>
   <body class="bg-[#0A0A0A] text-white min-h-screen flex">
-    <!-- Sidebar (Aside) -->
     <aside>
-      <!-- Profile Avatar Top -->
-      <!-- <a href="profile.html"
-        ><img
-          src="https://randomuser.me/api/portraits/women/44.jpg"
-          alt="Profile Picture"
-          class="profile-img"
-      /></a> -->
       <nav class="flex flex-col gap-4 w-full font-inter">
-        <a href="landing.html" class="nav-item flex items-center px-3 py-2">
+        <a href="main.html" class="nav-item flex items-center px-3 py-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
-            viewBox="0 0 24 24"
+            viewBox="0 0 24"
             stroke="currentColor"
             stroke-width="2"
           >
@@ -164,11 +221,11 @@
           </svg>
           <span>Home</span>
         </a>
-        <a href="#" class="nav-item flex items-center px-3 py-2">
+        <a href="main.html" class="nav-item flex items-center px-3 py-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
-            viewBox="0 0 24 24"
+            viewBox="0 0 24"
             stroke="currentColor"
             stroke-width="2"
           >
@@ -184,11 +241,11 @@
           </svg>
           <span>Search</span>
         </a>
-        <a href="#" class="nav-item flex items-center px-3 py-2">
+        <a href="main.html" class="nav-item flex items-center px-3 py-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
-            viewBox="0 0 24 24"
+            viewBox="0 0 24"
             stroke="currentColor"
             stroke-width="2"
           >
@@ -196,24 +253,15 @@
           </svg>
           <span>Explore</span>
         </a>
-        <a href="#" class="nav-item flex items-center px-3 py-2">
+
+        <a
+          href="messenger.html"
+          class="nav-item flex items-center px-3 py-2 relative"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            stroke-width="2"
-          >
-            <rect x="2" y="4" width="20" height="16" rx="4" />
-            <polygon points="10 10 16 14 10 18 10 10" fill="white" />
-          </svg>
-          <span>Reels</span>
-        </a>
-        <a href="#" class="nav-item flex items-center px-3 py-2 relative">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
+            viewBox="0 0 24"
             stroke="currentColor"
             stroke-width="2"
           >
@@ -231,7 +279,7 @@
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
-            viewBox="0 0 24 24"
+            viewBox="0 0 24"
             stroke="currentColor"
             stroke-width="2"
           >
@@ -240,31 +288,14 @@
           </svg>
           <span>Notifications</span>
         </a>
-        <a href="#" class="nav-item flex items-center px-3 py-2">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            stroke-width="2"
-          >
-            <rect x="4" y="4" width="16" height="16" rx="2" />
-            <line x1="12" y1="8" x2="12" y2="16" />
-            <line x1="8" y1="12" x2="16" y2="12" />
-          </svg>
-          <span>Create</span>
-        </a>
       </nav>
     </aside>
 
-    <!-- MAIN PROFILE PAGE CONTENT -->
     <main class="flex-1 overflow-auto">
-      <!-- Profile Header -->
       <section class="max-w-5xl mx-auto px-4 py-10">
         <div
           class="flex flex-col md:flex-row items-center md:items-start gap-8"
         >
-          <!-- Profile Pic -->
           <div class="flex-shrink-0">
             <div
               class="w-36 h-36 rounded-full border-4 border-transparent bg-gradient-to-r from-[#FF007A] via-[#A200FF] to-[#00F5FF] p-1 shadow-lg"
@@ -276,7 +307,6 @@
               />
             </div>
           </div>
-          <!-- Profile Info -->
           <div class="flex-1 text-center md:text-left">
             <div class="flex flex-col md:flex-row md:items-center gap-4">
               <h1 class="heading text-2xl font-bold text-white">jane_doe</h1>
@@ -286,17 +316,25 @@
                 >
                   Follow
                 </button>
+                <a href="messenger.html">
+                  <button
+                    class="px-4 py-2 rounded-lg text-sm font-medium border border-[#A200FF] text-[#A200FF] hover:bg-[#A200FF] hover:text-white"
+                  >
+                    Message
+                  </button>
+                </a>
                 <button
-                  class="px-4 py-2 rounded-lg text-sm font-medium border border-[#A200FF] text-[#A200FF] hover:bg-[#A200FF] hover:text-white"
+                  onclick="openCreateModal()"
+                  class="px-4 py-2 rounded-lg text-sm font-medium bg-gradient-to-r from-[#FF007A] via-[#A200FF] to-[#00F5FF] hover:opacity-90 shadow-md flex items-center text-white"
                 >
-                  Message
+                  <i class="fa-solid fa-plus mr-2 text-xs"></i>
+                  Create Post
                 </button>
               </div>
             </div>
-            <!-- Stats -->
             <div class="flex justify-center md:justify-start gap-8 mt-4">
               <div>
-                <span class="heading font-bold text-lg">3</span>
+                <span id="postCount" class="heading font-bold text-lg">3</span>
                 <p class="text-gray-400 text-sm">Posts</p>
               </div>
               <div>
@@ -308,7 +346,6 @@
                 <p class="text-gray-400 text-sm">Following</p>
               </div>
             </div>
-            <!-- Bio -->
             <div class="mt-4">
               <p class="heading font-semibold">Jane Doe</p>
               <p class="text-gray-300 text-sm">
@@ -322,46 +359,53 @@
         </div>
       </section>
 
-      <!-- Posts Grid -->
       <section class="max-w-5xl mx-auto px-4 pb-12">
-        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
-          <!-- Post 1 -->
+        <div id="postGrid" class="grid grid-cols-2 sm:grid-cols-3 gap-4">
           <div
             class="relative cursor-pointer"
-            onclick="openModal(['https://images.unsplash.com/photo-1519389950473-47ba0277781c'])"
+            onclick="openModal(['https://images.unsplash.com/photo-1541807084-5c52b6b3adef'], 'Working hard with the team!')"
           >
+            <i
+              class="fa-solid fa-trash-can post-delete-btn"
+              onclick="deletePost(event, this)"
+            ></i>
             <img
-              src="https://images.unsplash.com/photo-1519389950473-47ba0277781c"
+              src="https://images.unsplash.com/photo-1541807084-5c52b6b3adef"
               class="aspect-square object-cover rounded-lg hover:scale-105 transition-transform shadow-md"
             />
           </div>
-          <!-- Post 2 (Multi-Image) -->
-          <div
-            class="relative cursor-pointer"
-            onclick="openModal([
-          'https://images.unsplash.com/photo-1498050108023-c5249f4df085',
-          'https://images.unsplash.com/photo-1556157382-97eda2d62296',
-          'https://images.unsplash.com/photo-1522202176988-66273c2fd55f'
-        ])"
-          >
-            <div class="relative overflow-hidden rounded-lg shadow-md">
+
+          <div class="relative cursor-pointer">
+            <i
+              class="fa-solid fa-trash-can post-delete-btn"
+              onclick="deletePost(event, this)"
+            ></i>
+            <div
+              class="relative overflow-hidden rounded-lg shadow-md"
+              onclick="openModal([
+                'https://images.unsplash.com/photo-1498050108023-c5249f4df085',
+                'https://images.unsplash.com/photo-1556157382-97eda2d62296',
+                'https://images.unsplash.com/photo-1522202176988-66273c2fd55f'
+              ], 'My new setup. What do you think? 💻')"
+            >
               <img
                 src="https://images.unsplash.com/photo-1498050108023-c5249f4df085"
                 class="aspect-square object-cover"
               />
-              <!-- Multi-image indicator -->
-              <div
-                class="absolute top-2 right-2 bg-black/60 text-white text-sm p-1 rounded-md shadow-md"
-              >
+              <div class="multi-image-icon">
                 <i class="fa-solid fa-clone"></i>
               </div>
             </div>
           </div>
-          <!-- Post 3 -->
+
           <div
             class="relative cursor-pointer"
-            onclick="openModal(['https://images.unsplash.com/photo-1518770660439-4636190af475'])"
+            onclick="openModal(['https://images.unsplash.com/photo-1518770660439-4636190af475'], 'Code, code, and more code.')"
           >
+            <i
+              class="fa-solid fa-trash-can post-delete-btn"
+              onclick="deletePost(event, this)"
+            ></i>
             <img
               src="https://images.unsplash.com/photo-1518770660439-4636190af475"
               class="aspect-square object-cover rounded-lg hover:scale-105 transition-transform shadow-md"
@@ -370,7 +414,6 @@
         </div>
       </section>
 
-      <!-- Modal -->
       <div
         id="modal"
         class="fixed inset-0 bg-black/90 hidden flex flex-col items-center justify-center z-50 p-6"
@@ -381,14 +424,12 @@
         >
           &times;
         </button>
-        <!-- Image Viewer -->
         <div class="relative max-w-3xl w-full flex items-center justify-center">
           <img
             id="modalImage"
             src=""
             class="w-auto max-h-[70vh] object-contain rounded-lg shadow-lg mx-auto"
           />
-          <!-- Arrows -->
           <button
             id="prevBtn"
             onclick="prevImage()"
@@ -404,35 +445,114 @@
             &#10095;
           </button>
         </div>
-        <!-- Action Buttons -->
-        <div class="flex gap-6 mt-4 text-2xl">
-          <i class="far fa-heart hover:text-[#FF007A] cursor-pointer"></i>
-          <i class="far fa-comment hover:text-[#00F5FF] cursor-pointer"></i>
-          <i class="far fa-paper-plane hover:text-[#A200FF] cursor-pointer"></i>
+
+        <div
+          id="modalCaptionContainer"
+          class="text-white text-sm mt-4 max-w-3xl w-full px-4"
+        >
+          </div>
+
+        <div class="flex gap-6 mt-4 text-2xl max-w-3xl w-full px-4">
+          <i
+            id="likeButton"
+            class="far fa-heart hover:text-[#FF007A] cursor-pointer"
+            aria-label="Like post"
+            onclick="toggleLike(this)"
+          ></i>
+          <i
+            class="far fa-comment hover:text-[#00F5FF] cursor-pointer"
+            aria-label="Comment on post"
+          ></i>
+          <i
+            class="far fa-paper-plane hover:text-[#A200FF] cursor-pointer"
+            aria-label="Share post"
+          ></i>
         </div>
       </div>
 
-      <!-- Footer -->
       <footer class="text-center py-6 text-gray-500 text-sm">
         © 2025 Konekta. All rights reserved.
       </footer>
     </main>
 
-    <!-- Font Awesome -->
+    <div id="createModal">
+      <div
+        class="bg-[#121212] rounded-lg shadow-xl p-6 w-full max-w-md relative"
+      >
+        <button
+          onclick="closeCreateModal()"
+          class="absolute top-3 right-4 text-gray-400 hover:text-white text-2xl"
+        >
+          &times;
+        </button>
+        <h2 class="heading text-xl font-bold mb-4">Create New Post</h2>
+        <form id="createPostForm">
+          <div class="mb-4">
+            <label for="postCaption" class="block text-sm font-medium mb-2"
+              >Caption (Optional)</label
+            >
+            <textarea
+              id="postCaption"
+              rows="4"
+              class="w-full p-2 rounded-md bg-[#2A2A2A] border border-gray-600 focus:border-[#A200FF] focus:ring-0"
+              placeholder="Write a caption..."
+            ></textarea>
+          </div>
+          <div class="mb-4">
+            <label for="postImage" class="block text-sm font-medium mb-2"
+              >Upload Image</label
+            >
+            <input
+              type="file"
+              id="postImage"
+              accept="image/*"
+              class="w-full text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-gradient-to-r from-[#FF007A] to-[#A200FF] file:text-white hover:file:opacity-90"
+            />
+          </div>
+          <div
+            id="formError"
+            class="text-red-500 text-sm mt-2 mb-4"
+          ></div>
+          <button
+            type="submit"
+            id="submitPostBtn"
+            class="w-full px-4 py-2 rounded-lg text-sm font-medium bg-gradient-to-r from-[#FF007A] via-[#A200FF] to-[#00F5FF] hover:opacity-90 shadow-md"
+          >
+            Create Post
+          </button>
+        </form>
+      </div>
+    </div>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"
       crossorigin="anonymous"
     ></script>
-    <!-- JS for modal -->
     <script>
       let images = [];
       let currentIndex = 0;
-      function openModal(imgArray) {
+
+      function openModal(imgArray, caption = "") {
         images = imgArray;
         currentIndex = 0;
         document.getElementById("modal").classList.remove("hidden");
         updateModal();
+
+        const captionContainer = document.getElementById(
+          "modalCaptionContainer"
+        );
+        if (caption) {
+          const safeCaption = document.createTextNode(caption).textContent;
+          captionContainer.innerHTML = `<strong class="font-poppins">jane_doe</strong> ${safeCaption}`;
+          captionContainer.style.display = "block";
+        } else {
+          captionContainer.style.display = "none";
+        }
+
+        const likeButton = document.getElementById("likeButton");
+        likeButton.classList.remove("fa-solid", "text-[#FF007A]");
+        likeButton.classList.add("far");
       }
+
       function closeModal() {
         document.getElementById("modal").classList.add("hidden");
       }
@@ -455,6 +575,153 @@
           updateModal();
         }
       }
+
+      /* ================================================================
+      JavaScript for new features
+      ================================================================
+      */
+
+      // --- Get Modal Elements ---
+      const createModal = document.getElementById("createModal");
+      const createPostForm = document.getElementById("createPostForm");
+      const postCaption = document.getElementById("postCaption");
+      const postImageInput = document.getElementById("postImage");
+      const postGrid = document.getElementById("postGrid");
+      const formError = document.getElementById("formError");
+      const submitPostBtn = document.getElementById("submitPostBtn");
+      const postCountElement = document.getElementById("postCount");
+
+      /* New function to toggle like button */
+      function toggleLike(iconElement) {
+        if (iconElement.classList.contains("fa-solid")) {
+          iconElement.classList.remove("fa-solid", "text-[#FF007A]");
+          iconElement.classList.add("far");
+        } else {
+          iconElement.classList.remove("far");
+          iconElement.classList.add("fa-solid", "text-[#FF007A]");
+        }
+      }
+
+      /* New function to update post count */
+      function updatePostCount() {
+        const count = postGrid.children.length;
+        postCountElement.innerText = count;
+      }
+
+      // --- Functions to control the new modal ---
+      function openCreateModal() {
+        createModal.classList.add("show");
+      }
+
+      function closeCreateModal() {
+        createModal.classList.remove("show");
+        formError.classList.remove("show");
+        createPostForm.reset();
+      }
+
+      // --- Function to Delete Post ---
+      function deletePost(event, iconElement) {
+        event.stopPropagation();
+        const postToDelete = iconElement.closest(".relative.cursor-pointer");
+
+        if (postToDelete) {
+          if (confirm("Are you sure you want to delete this post?")) {
+            postToDelete.remove();
+            updatePostCount(); // Update count after deleting
+          }
+        }
+      }
+
+      /* ==================================================
+       Form submission logic
+      ===================================================== */
+
+      // --- Handle Form Submission ---
+      createPostForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        // --- JS Validation ---
+        const caption = postCaption.value.trim();
+        const file = postImageInput.files[0]; // Get the selected file
+
+        if (!file) {
+          formError.innerText = "Please select an image.";
+          formError.classList.add("show");
+          return;
+        }
+
+        formError.classList.remove("show");
+        submitPostBtn.disabled = true;
+        submitPostBtn.innerText = "Posting...";
+
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+          const imageUrl = e.target.result;
+
+          // 1. Create the new post element
+          const newPost = document.createElement("div");
+          newPost.className = "relative cursor-pointer";
+
+          const escapedCaption = caption.replace(/'/g, "\\'");
+          newPost.setAttribute(
+            "onclick",
+            `openModal(['${imageUrl}'], '${escapedCaption}')`
+          );
+
+          /* --- THIS IS THE CORRECTED SECTION --- */
+          // I removed the broken text from the class attribute
+          newPost.innerHTML = `
+            <i
+              class="fa-solid fa-trash-can post-delete-btn"
+              onclick="deletePost(event, this)"
+            ></i>
+            <img
+              src="${imageUrl}"
+              class="aspect-square object-cover rounded-lg hover:scale-105 transition-transform shadow-md"
+            />
+          `;
+          /* --- END OF CORRECTION --- */
+          
+          // Add the new post to the top of the grid
+          postGrid.prepend(newPost);
+          updatePostCount(); // Update count after adding
+
+          // 2. Send to mock API
+          fetch("https://jsonplaceholder.typicode.com/posts", {
+            method: "POST",
+            body: JSON.stringify({
+              title: "Konekta Post",
+              body: caption, // This will be an empty string if no caption was added
+              userId: 1,
+            }),
+            headers: {
+              "Content-type": "application/json; charset=UTF-8",
+            },
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              console.log("Success (from mock API):", data);
+              closeCreateModal();
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+              alert("An error occurred. Please try again.");
+              formError.innerText = "An error occurred. Please try again.";
+              formError.classList.add("show");
+            })
+            .finally(() => {
+              submitPostBtn.disabled = false;
+              submitPostBtn.innerText = "Create Post";
+            });
+        };
+
+        reader.readAsDataURL(file);
+      });
+      /* --- END OF MODIFICATION --- */
+
+      /* Call updatePostCount on page load */
+      updatePostCount();
     </script>
   </body>
 </html>
