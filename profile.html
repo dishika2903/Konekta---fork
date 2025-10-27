@@ -140,8 +140,8 @@
         font-family: "Poppins", sans-serif;
       }
 
-      /* Styles for the "Create Post" Modal */
-      #createModal {
+      /* Styles for Modals */
+      .modal-backdrop {
         display: none; /* Hidden by default */
         position: fixed;
         inset: 0;
@@ -152,7 +152,7 @@
         padding: 1.5rem;
       }
 
-      #createModal.show {
+      .modal-backdrop.show {
         display: flex;
       }
       #formError {
@@ -301,6 +301,7 @@
               class="w-36 h-36 rounded-full border-4 border-transparent bg-gradient-to-r from-[#FF007A] via-[#A200FF] to-[#00F5FF] p-1 shadow-lg"
             >
               <img
+                id="profileImage"
                 src="https://randomuser.me/api/portraits/women/44.jpg"
                 alt="Profile"
                 class="rounded-full w-full h-full object-cover border-4 border-[#0A0A0A]"
@@ -323,6 +324,13 @@
                     Message
                   </button>
                 </a>
+                
+                <button
+                  onclick="openEditModal()"
+                  class="px-4 py-2 rounded-lg text-sm font-medium border border-[#A200FF] text-[#A200FF] hover:bg-[#A200FF] hover:text-white"
+                >
+                  Edit Profile
+                </button>
                 <button
                   onclick="openCreateModal()"
                   class="px-4 py-2 rounded-lg text-sm font-medium bg-gradient-to-r from-[#FF007A] via-[#A200FF] to-[#00F5FF] hover:opacity-90 shadow-md flex items-center text-white"
@@ -347,11 +355,14 @@
               </div>
             </div>
             <div class="mt-4">
-              <p class="heading font-semibold">Jane Doe</p>
-              <p class="text-gray-300 text-sm">
+              <p id="profileName" class="heading font-semibold">Jane Doe</p>
+              <p id="profileBio" class="text-gray-300 text-sm">
                 Full Stack Developer | Exploring tech & design 🚀
               </p>
-              <a href="#" class="text-[#00F5FF] text-sm hover:underline"
+              <a
+                id="profileLink"
+                href="#"
+                class="text-[#00F5FF] text-sm hover:underline"
                 >konekta.dev/janedoe</a
               >
             </div>
@@ -449,8 +460,7 @@
         <div
           id="modalCaptionContainer"
           class="text-white text-sm mt-4 max-w-3xl w-full px-4"
-        >
-          </div>
+        ></div>
 
         <div class="flex gap-6 mt-4 text-2xl max-w-3xl w-full px-4">
           <i
@@ -475,7 +485,7 @@
       </footer>
     </main>
 
-    <div id="createModal">
+    <div id="createModal" class="modal-backdrop">
       <div
         class="bg-[#121212] rounded-lg shadow-xl p-6 w-full max-w-md relative"
       >
@@ -523,6 +533,72 @@
         </form>
       </div>
     </div>
+
+    <div id="editProfileModal" class="modal-backdrop">
+      <div
+        class="bg-[#121212] rounded-lg shadow-xl p-6 w-full max-w-md relative"
+      >
+        <button
+          onclick="closeEditModal()"
+          class="absolute top-3 right-4 text-gray-400 hover:text-white text-2xl"
+        >
+          &times;
+        </button>
+        <h2 class="heading text-xl font-bold mb-4">Edit Profile</h2>
+        <form id="editProfileForm">
+          <div class="mb-4">
+            <label for="editName" class="block text-sm font-medium mb-2"
+              >Name</label
+            >
+            <input
+              type="text"
+              id="editName"
+              class="w-full p-2 rounded-md bg-[#2A2A2A] border border-gray-600 focus:border-[#A200FF] focus:ring-0"
+            />
+          </div>
+          <div class="mb-4">
+            <label for="editBio" class="block text-sm font-medium mb-2"
+              >Bio</label
+            >
+            <textarea
+              id="editBio"
+              rows="3"
+              class="w-full p-2 rounded-md bg-[#2A2A2A] border border-gray-600 focus:border-[#A200FF] focus:ring-0"
+            ></textarea>
+          </div>
+          <div class="mb-4">
+            <label for="editLink" class="block text-sm font-medium mb-2"
+              >Website</label
+            >
+            <input
+              type="text"
+              id="editLink"
+              class="w-full p-2 rounded-md bg-[#2A2A2A] border border-gray-600 focus:border-[#A200FF] focus:ring-0"
+              placeholder="konekta.dev/yourname"
+            />
+          </div>
+          <div class="mb-4">
+            <label for="editImage" class="block text-sm font-medium mb-2"
+              >Profile Picture</label
+            >
+            <input
+              type="file"
+              id="editImage"
+              accept="image/*"
+              class="w-full text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-gradient-to-r from-[#FF007A] to-[#A200FF] file:text-white hover:file:opacity-90"
+            />
+          </div>
+          <button
+            type="submit"
+            id="submitEditBtn"
+            class="w-full px-4 py-2 rounded-lg text-sm font-medium bg-gradient-to-r from-[#FF007A] via-[#A200FF] to-[#00F5FF] hover:opacity-90 shadow-md"
+          >
+            Save Changes
+          </button>
+        </form>
+      </div>
+    </div>
+
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"
       crossorigin="anonymous"
@@ -669,8 +745,6 @@
             `openModal(['${imageUrl}'], '${escapedCaption}')`
           );
 
-          /* --- THIS IS THE CORRECTED SECTION --- */
-          // I removed the broken text from the class attribute
           newPost.innerHTML = `
             <i
               class="fa-solid fa-trash-can post-delete-btn"
@@ -678,11 +752,11 @@
             ></i>
             <img
               src="${imageUrl}"
-              class="aspect-square object-cover rounded-lg hover:scale-105 transition-transform shadow-md"
+              class="aspect-square object-cover rounded-lg hover:scale-1WELCOME!
+ transition-transform shadow-md"
             />
           `;
-          /* --- END OF CORRECTION --- */
-          
+
           // Add the new post to the top of the grid
           postGrid.prepend(newPost);
           updatePostCount(); // Update count after adding
@@ -718,10 +792,81 @@
 
         reader.readAsDataURL(file);
       });
-      /* --- END OF MODIFICATION --- */
 
       /* Call updatePostCount on page load */
       updatePostCount();
+
+      /* ==================================================
+       NEW JAVASCRIPT FOR EDIT PROFILE
+      ===================================================== */
+
+      // --- Get Edit Profile Modal Elements ---
+      const editProfileModal = document.getElementById("editProfileModal");
+      const editProfileForm = document.getElementById("editProfileForm");
+      const submitEditBtn = document.getElementById("submitEditBtn");
+
+      // --- Get Profile Page Elements to Update ---
+      const profileImage = document.getElementById("profileImage");
+      const profileName = document.getElementById("profileName");
+      const profileBio = document.getElementById("profileBio");
+      const profileLink = document.getElementById("profileLink");
+
+      // --- Get Edit Form Input Fields ---
+      const editNameInput = document.getElementById("editName");
+      const editBioInput = document.getElementById("editBio");
+      const editLinkInput = document.getElementById("editLink");
+      const editImageInput = document.getElementById("editImage");
+
+      // --- Functions to control the edit modal ---
+      function openEditModal() {
+        // Pre-fill the form with current profile data
+        editNameInput.value = profileName.innerText;
+        editBioInput.value = profileBio.innerText.trim();
+        editLinkInput.value = profileLink.innerText;
+        editImageInput.value = ""; // Clear file input
+        editProfileModal.classList.add("show");
+      }
+
+      function closeEditModal() {
+        editProfileModal.classList.remove("show");
+        editProfileForm.reset();
+      }
+
+      // --- Handle Edit Form Submission ---
+      editProfileForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        submitEditBtn.disabled = true;
+        submitEditBtn.innerText = "Saving...";
+
+        // 1. Update text content
+        profileName.innerText = editNameInput.value;
+        profileBio.innerText = editBioInput.value;
+        profileLink.innerText = editLinkInput.value;
+        // Also update the link's actual href
+        profileLink.href = "https://" + editLinkInput.value;
+
+        // 2. Check if a new profile picture was uploaded
+        const file = editImageInput.files[0];
+
+        if (file) {
+          // If yes, read the file and update the src
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            profileImage.src = e.target.result;
+            // Reset button and close modal AFTER file is loaded
+            submitEditBtn.disabled = false;
+            submitEditBtn.innerText = "Save Changes";
+            closeEditModal();
+          };
+          reader.readAsDataURL(file);
+        } else {
+          // If no new file, just reset button and close
+          submitEditBtn.disabled = false;
+          submitEditBtn.innerText = "Save Changes";
+          closeEditModal();
+        }
+      });
     </script>
   </body>
 </html>
