@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Konekta Sidebar &amp; Stories</title>
@@ -453,37 +454,12 @@
 <body>
 
   <aside>
-    <!-- Profile Avatar Top -->
-    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Profile Picture" class="profile-img" />
-    <!-- Navigation -->
-    <nav class="flex flex-col gap-4 w-full font-inter">
-      <a href="#" class="nav-item flex items-center px-3 py-2">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l9-9 9 9v9a3 3 0 01-3 3H6a3 3 0 01-3-3z" />
-        </svg>
-        <span>Home</span>
-      </a>
-      <a href="#" class="nav-item flex items-center px-3 py-2">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <circle cx="11" cy="11" r="7" />
-          <line x1="21" y1="21" x2="16.65" y2="16.65" stroke-linecap="round" stroke-linejoin="round" />
-        </svg>
-        <span >Search</span>
-      </a>
-      <a href="#" class="nav-item flex items-center px-3 py-2">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <polygon points="12 2 19 21 12 17 5 21 12 2" />
-        </svg>
-        <span>Explore</span>
-      </a>
-      <a href="#" class="nav-item flex items-center px-3 py-2">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <rect x="2" y="4" width="20" height="16" rx="4" />
-          <polygon points="10 10 16 14 10 18 10 10" fill="white" />
-        </svg>
-        <span>Reels</span>
-      </a>
-      <!-- Navigation -->
+      <a href="profile.html"
+        ><img
+          src="https://randomuser.me/api/portraits/women/44.jpg"
+          alt="Profile Picture"
+          class="profile-img"
+      /></a>
       <nav class="flex flex-col gap-4 w-full font-inter">
         <a href="landing.html" class="nav-item flex items-center px-3 py-2">
           <svg
@@ -509,7 +485,7 @@
             stroke="currentColor"
             stroke-width="2"
           >
-            <circle cx="11" cy="11" r="7" />
+            <circle cx="11" cy="11" cy="11" r="7" />
             <line
               x1="21"
               y1="21"
@@ -546,23 +522,27 @@
           </svg>
           <span>Reels</span>
         </a>
-
-        
-        <!-- updated messages link -->
-        <a href="https://68fe7021114e4e45cc0fdb49--marvelous-kleicha-078e0a.netlify.app" 
-   target="_blank" 
-   class="nav-item flex items-center px-3 py-2 relative">
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-    <path d="M21 15V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2z"/>
-    <polyline points="3 8 12 13 21 8"/>
-  </svg>
-  <span>Messages <span class="badge">8</span></span>
-</a>
-
-
+        <a
+          href="messenger.html"
+          class="nav-item flex items-center px-3 py-2 relative"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              d="M21 15V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2z"
+            />
+            <polyline points="3 8 12 13 21 8" />
+          </svg>
+          <span>Messages <span class="badge">8</span></span>
+        </a>
         <a
           href="notifications.html"
-          class="nav-item flex items-center px-3 py-2"
+          class="nav-item flex items-center px-3 py-2 active"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -592,7 +572,6 @@
         </a>
       </nav>
     </aside>
-
     <main class="flex-grow bg-[#181818] p-6 overflow-auto w-full">
       <!-- Stories bar -->
       <!-- Stories Carousel Bar -->
@@ -819,418 +798,191 @@
       <!-- POSTS FEED -->
       <div class="space-y-10 max-w-xl mx-14 mt-4">
         <!-- ===== POST 1 ===== -->
-        <div
-          class="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100"
-        >
+        <div class="bg-black rounded-2xl shadow-lg overflow-hidden border border-gray-100 max-w-md mx-auto my-8" data-post-id="43">
           <!-- User Info -->
-          <div class="flex items-center p-4">
+          <div class="flex items-center gap-3 px-5 pt-5 pb-2">
             <img
               src="https://randomuser.me/api/portraits/women/50.jpg"
-              class="w-12 h-12 rounded-full border-2 border-pink-400"
+              class="w-12 h-12 rounded-full border-2 border-pink-400 object-cover"
+              alt="Sky Williams"
             />
-            <div class="ml-3">
-              <div class="font-semibold text-gray-900">Sky Williams</div>
-              <div class="text-xs text-gray-500">1d ago</div>
+            <div>
+              <div class="font-semibold text-white text-base">Sky Williams</div>
+              <div class="text-xs text-gray-400">1d ago</div>
             </div>
           </div>
           <!-- Text -->
-          <div class="px-4 pb-3 text-gray-800 text-[15px]">
+          <div class="px-5 pb-2 text-white text-[15px]">
             Had an amazing time at the
-            <span class="font-semibold text-pink-600">Garbage Café</span> ♻️ –
+            <span class="font-semibold text-pink-400">Garbage Café</span> ♻️ –
             turning waste into meals. Inspiring concept!
           </div>
           <!-- Carousel -->
-          <div class="relative flex justify-center">
-            <div
-              id="carousel1"
-              class="relative w-96 h-80 overflow-hidden rounded-lg"
-            >
-              <div
-                class="carousel-track flex transition-transform duration-500 ease-in-out"
-                data-index="0"
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80"
-                  class="w-96 h-80 object-cover flex-shrink-0"
-                />
-                <img
-                  src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=800&q=80"
-                  class="w-96 h-80 object-cover flex-shrink-0"
-                />
-                <img
-                  src="https://images.unsplash.com/photo-1528150177500-7e7e63368f9c?auto=format&fit=crop&w=800&q=80"
-                  class="w-96 h-80 object-cover flex-shrink-0"
-                />
+          <div class="relative flex justify-center pb-2">
+            <div id="carousel43" class="relative w-full max-w-lg h-72 overflow-hidden rounded-lg bg-black">
+              <div class="carousel-track flex transition-transform duration-300 ease-in-out" data-index="0">
+                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" class="w-full h-72 object-cover flex-shrink-0" />
+                <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=800&q=80" class="w-full h-72 object-cover flex-shrink-0" />
+                <img src="https://images.unsplash.com/photo-1528150177500-7e7e63368f9c?auto=format&fit=crop&w=800&q=80" class="w-full h-72 object-cover flex-shrink-0" />
               </div>
+              <button onclick="moveSlide('carousel43', -1)" class="absolute left-2 top-1/2 -translate-y-1/2 z-10 text-2xl text-white hover:text-pink-400 focus:outline-none" aria-label="Previous" style="background: none; border: none;">
+                ‹
+              </button>
+              <button onclick="moveSlide('carousel43', 1)" class="absolute right-2 top-1/2 -translate-y-1/2 z-10 text-2xl text-white hover:text-pink-400 focus:outline-none" aria-label="Next" style="background: none; border: none;">
+                ›
+              </button>
             </div>
-            <button
-              onclick="moveSlide('carousel1', -1)"
-              class="absolute left-5 top-1/2 -translate-y-1/2 rounded-full bg-white shadow-md hover:bg-pink-500 hover:text-white p-2"
-            >
-              ‹
-            </button>
-            <button
-              onclick="moveSlide('carousel1', 1)"
-              class="absolute right-5 top-1/2 -translate-y-1/2 rounded-full bg-white shadow-md hover:bg-pink-500 hover:text-white p-2"
-            >
-              ›
-            </button>
           </div>
           <!-- Caption -->
-          <div class="px-4 py-3 text-gray-700 text-sm">
-            <span class="font-semibold">Anna</span> Sharing a moment of change
-            🌱
+          <div class="px-5 pt-1 pb-2 text-gray-300 text-sm">
+            <span class="font-semibold text-pink-200">Anna</span> Sharing a moment of change 🌱
           </div>
-          <!-- Buttons -->
-          <div
-            class="flex items-center justify-between px-4 py-3 border-t border-gray-100"
-          >
-            <div class="flex gap-6">
-              <button
-                class="flex items-center gap-2 text-gray-600 hover:text-red-500"
-              >
-                ❤️ Like
-              </button>
-              <button
-                class="flex items-center gap-2 text-gray-600 hover:text-blue-500"
-              >
-                💬 Comment
-              </button>
-              <button
-                class="flex items-center gap-2 text-gray-600 hover:text-green-500"
-              >
-                🔗 Share
-              </button>
+          <!-- Actions & Comments -->
+          <div class="px-5 pt-2 pb-2 border-t border-gray-800">
+            <div class="flex items-center justify-between">
+              <div class="flex gap-6">
+                <button class="like-btn flex items-center gap-1 text-white text-base hover:text-blue-400">❤️ <span class="like-count">0</span></button>
+                <button class="comment-btn flex items-center gap-1 text-white text-base hover:text-blue-400">💬 Comment</button>
+                <button class="share-btn flex items-center gap-1 text-white text-base hover:text-green-400">🔗 Share</button>
+              </div>
             </div>
+            <form class="comment-form flex gap-2 mt-2 hidden">
+              <input class="comment-input border bg-black text-white border-gray-700 rounded px-2 py-1 flex-1" placeholder="Write a comment...">
+              <button type="submit" class="bg-blue-500 text-white rounded px-3 py-1">Post</button>
+            </form>
+            <div class="comments space-y-1 mt-2 text-white text-base"></div>
+            
           </div>
         </div>
+        
 
         <!-- ===== POST 2 ===== -->
-        <div
-          class="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100"
-        >
-          <div class="flex items-center p-4">
-            <img
-              src="https://randomuser.me/api/portraits/men/42.jpg"
-              class="w-12 h-12 rounded-full border-2 border-blue-400"
-            />
-            <div class="ml-3">
-              <div class="font-semibold text-gray-900">David Josh</div>
-              <div class="text-xs text-gray-500">2h ago</div>
+        <div class="bg-black rounded-2xl shadow-lg overflow-hidden border border-gray-100 max-w-md mx-auto my-8" data-post-id="101">
+          <div class="flex items-center gap-3 px-5 pt-5 pb-2">
+            <img src="https://randomuser.me/api/portraits/women/22.jpg" class="w-12 h-12 rounded-full border-2 border-purple-400 object-cover" alt="Ella Thompson"/>
+            <div>
+              <div class="font-semibold text-white">Ella Thompson</div>
+              <div class="text-xs text-gray-400">3h ago</div>
             </div>
           </div>
-          <div class="px-4 pb-3 text-gray-800 text-[15px]">
-            Just visited
-            <span class="font-semibold text-blue-600">Blue City</span>
-            🌍 – one of the most magical places I’ve ever seen!
+          <div class="px-5 pb-2 text-white text-[15px]">
+            Couldn't get enough of the colors at <span class="font-semibold text-purple-400">Iceland's waterfalls</span> 🌈💧!
           </div>
-          <div class="relative flex justify-center">
-            <div
-              id="carousel2"
-              class="relative w-96 h-80 overflow-hidden rounded-lg"
-            >
-              <div
-                class="carousel-track flex transition-transform duration-500 ease-in-out"
-                data-index="0"
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80"
-                  class="w-96 h-80 object-cover flex-shrink-0"
-                />
-                <img
-                  src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=800&q=80"
-                  class="w-96 h-80 object-cover flex-shrink-0"
-                />
-                <img
-                  src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80"
-                  class="w-96 h-80 object-cover flex-shrink-0"
-                />
+          <div class="relative flex justify-center pb-2">
+            <div id="carousel101" class="relative w-full max-w-lg h-72 overflow-hidden rounded-lg bg-black">
+              <div class="carousel-track flex transition-transform duration-300 ease-in-out" data-index="0">
+                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" class="w-full h-72 object-cover flex-shrink-0" />
+                <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80" class="w-full h-72 object-cover flex-shrink-0" />
+              </div>
+              <button onclick="moveSlide('carousel101', -1)" class="absolute left-2 top-1/2 -translate-y-1/2 z-10 text-2xl text-white hover:text-purple-400" style="background: none; border: none;">‹</button>
+              <button onclick="moveSlide('carousel101', 1)" class="absolute right-2 top-1/2 -translate-y-1/2 z-10 text-2xl text-white hover:text-purple-400" style="background: none; border: none;">›</button>
+            </div>
+          </div>
+          <div class="px-5 pt-1 pb-2 text-gray-300 text-sm">
+            <span class="font-semibold text-purple-300">Ella</span> Nature lover.
+          </div>
+          <div class="px-5 pt-2 pb-2 border-t border-gray-800">
+            <div class="flex items-center justify-between">
+              <div class="flex gap-6">
+                <button class="like-btn flex items-center gap-1 text-white text-base hover:text-blue-400">❤️ <span class="like-count">0</span></button>
+                <button class="comment-btn flex items-center gap-1 text-white text-base hover:text-blue-400">💬 Comment</button>
+                <button class="share-btn flex items-center gap-1 text-white text-base hover:text-green-400">🔗 Share</button>
               </div>
             </div>
-            <button
-              onclick="moveSlide('carousel2', -1)"
-              class="absolute left-5 top-1/2 -translate-y-1/2 rounded-full bg-white shadow-md hover:bg-blue-500 hover:text-white p-2"
-            >
-              ‹
-            </button>
-            <button
-              onclick="moveSlide('carousel2', 1)"
-              class="absolute right-5 top-1/2 -translate-y-1/2 rounded-full bg-white shadow-md hover:bg-blue-500 hover:text-white p-2"
-            >
-              ›
-            </button>
-          </div>
-          <div class="px-4 py-3 text-gray-700 text-sm">
-            <span class="font-semibold">David Josh</span> Exploring the blue
-            city 💙
-          </div>
-          <div
-            class="flex items-center justify-between px-4 py-3 border-t border-gray-100"
-          >
-            <div class="flex gap-6">
-              <button
-                class="flex items-center gap-2 text-gray-600 hover:text-red-500"
-              >
-                ❤️ Like
-              </button>
-              <button
-                class="flex items-center gap-2 text-gray-600 hover:text-blue-500"
-              >
-                💬 Comment
-              </button>
-              <button
-                class="flex items-center gap-2 text-gray-600 hover:text-green-500"
-              >
-                🔗 Share
-              </button>
-            </div>
+            <form class="comment-form flex gap-2 mt-2 hidden">
+              <input class="comment-input border bg-black text-white border-gray-700 rounded px-2 py-1 flex-1" placeholder="Write a comment...">
+              <button type="submit" class="bg-blue-500 text-white rounded px-3 py-1">Post</button>
+            </form>
+            <div class="comments space-y-1 mt-2 text-white text-base"></div>
+            
           </div>
         </div>
+        
 
         <!-- ===== POST 3 ===== -->
-        <div
-          class="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100"
-        >
-          <div class="flex items-center p-4">
-            <img
-              src="https://randomuser.me/api/portraits/women/68.jpg"
-              class="w-12 h-12 rounded-full border-2 border-green-400"
-            />
-            <div class="ml-3">
-              <div class="font-semibold text-gray-900">Emily</div>
-              <div class="text-xs text-gray-500">3h ago</div>
+        <div class="bg-black rounded-2xl shadow-lg overflow-hidden border border-gray-100 max-w-md mx-auto my-8" data-post-id="103">
+          <div class="flex items-center gap-3 px-5 pt-5 pb-2">
+            <img src="https://randomuser.me/api/portraits/men/34.jpg" class="w-12 h-12 rounded-full border-2 border-blue-400 object-cover" alt="Alex Kim"/>
+            <div>
+              <div class="font-semibold text-white">Alex Kim</div>
+              <div class="text-xs text-gray-400">10h ago</div>
             </div>
           </div>
-          <div class="px-4 pb-3 text-gray-800 text-[15px]">
-            Hiking in the
-            <span class="font-semibold text-green-600">Western Ghats</span> –
-            pure bliss 🌿
+          <div class="px-5 pb-2 text-white text-[15px]">
+            <span class="font-semibold text-blue-400">Sea breeze</span> and black coffee ☕️🌊 #beachday
           </div>
-          <div class="relative flex justify-center">
-            <div
-              id="carousel3"
-              class="relative w-96 h-80 overflow-hidden rounded-lg"
-            >
-              <div
-                class="carousel-track flex transition-transform duration-500 ease-in-out"
-                data-index="0"
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=800&q=80"
-                  class="w-96 h-80 object-cover flex-shrink-0"
-                />
-                <img
-                  src="https://images.unsplash.com/photo-1482192596544-9eb780fc7f66?auto=format&fit=crop&w=800&q=80"
-                  class="w-96 h-80 object-cover flex-shrink-0"
-                />
-                <img
-                  src="https://images.unsplash.com/photo-1523413651479-597eb2da0ad1?auto=format&fit=crop&w=800&q=80"
-                  class="w-96 h-80 object-cover flex-shrink-0"
-                />
+          <div class="relative flex justify-center pb-2">
+            <div id="carousel103" class="relative w-full max-w-lg h-72 overflow-hidden rounded-lg bg-black">
+              <div class="carousel-track flex transition-transform duration-300 ease-in-out" data-index="0">
+                <img src="https://images.unsplash.com/photo-1468436139062-f60a71c5c892?auto=format&fit=crop&w=800&q=80" class="w-full h-72 object-cover flex-shrink-0" />
+                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" class="w-full h-72 object-cover flex-shrink-0" />
+              </div>
+              <button onclick="moveSlide('carousel103', -1)" class="absolute left-2 top-1/2 -translate-y-1/2 z-10 text-2xl text-white hover:text-blue-400" style="background: none; border: none;">‹</button>
+              <button onclick="moveSlide('carousel103', 1)" class="absolute right-2 top-1/2 -translate-y-1/2 z-10 text-2xl text-white hover:text-blue-400" style="background: none; border: none;">›</button>
+            </div>
+          </div>
+          <div class="px-5 pt-1 pb-2 text-gray-300 text-sm">
+            <span class="font-semibold text-blue-300">Alex</span> Life felt lighter.
+          </div>
+          <!-- Actions/Comments as before -->
+          <div class="px-5 pt-2 pb-2 border-t border-gray-800">
+            <div class="flex items-center justify-between">
+              <div class="flex gap-6">
+                <button class="like-btn flex items-center gap-1 text-white text-base hover:text-blue-400">❤️ <span class="like-count">0</span></button>
+                <button class="comment-btn flex items-center gap-1 text-white text-base hover:text-blue-400">💬 Comment</button>
+                <button class="share-btn flex items-center gap-1 text-white text-base hover:text-green-400">🔗 Share</button>
               </div>
             </div>
-            <button
-              onclick="moveSlide('carousel3', -1)"
-              class="absolute left-5 top-1/2 -translate-y-1/2 rounded-full bg-white shadow-md hover:bg-green-500 hover:text-white p-2"
-            >
-              ‹
-            </button>
-            <button
-              onclick="moveSlide('carousel3', 1)"
-              class="absolute right-5 top-1/2 -translate-y-1/2 rounded-full bg-white shadow-md hover:bg-green-500 hover:text-white p-2"
-            >
-              ›
-            </button>
-          </div>
-          <div class="px-4 py-3 text-gray-700 text-sm">
-            <span class="font-semibold">Priya Nair</span> Lost in the greens 🍃
-          </div>
-          <div
-            class="flex items-center justify-between px-4 py-3 border-t border-gray-100"
-          >
-            <div class="flex gap-6">
-              <button
-                class="flex items-center gap-2 text-gray-600 hover:text-red-500"
-              >
-                ❤️ Like
-              </button>
-              <button
-                class="flex items-center gap-2 text-gray-600 hover:text-blue-500"
-              >
-                💬 Comment
-              </button>
-              <button
-                class="flex items-center gap-2 text-gray-600 hover:text-green-500"
-              >
-                🔗 Share
-              </button>
-            </div>
+            <form class="comment-form flex gap-2 mt-2 hidden">
+              <input class="comment-input border bg-black text-white border-gray-700 rounded px-2 py-1 flex-1" placeholder="Write a comment...">
+              <button type="submit" class="bg-blue-500 text-white rounded px-3 py-1">Post</button>
+            </form>
+            <div class="comments space-y-1 mt-2 text-white text-base"></div>
+            
           </div>
         </div>
-
-        <!-- ===== POST 4 ===== -->
-        <div
-          class="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100"
-        >
-          <div class="flex items-center p-4">
-            <img
-              src="https://randomuser.me/api/portraits/men/76.jpg"
-              class="w-12 h-12 rounded-full border-2 border-yellow-400"
-            />
-            <div class="ml-3">
-              <div class="font-semibold text-gray-900">Alex Chen</div>
-              <div class="text-xs text-gray-500">5h ago</div>
-            </div>
-          </div>
-          <div class="px-4 pb-3 text-gray-800 text-[15px]">
-            Sunset at
-            <span class="font-semibold text-yellow-600">Marine Drive</span> 🌅 –
-            Mumbai vibes!
-          </div>
-          <div class="relative flex justify-center">
-            <div
-              id="carousel4"
-              class="relative w-96 h-80 overflow-hidden rounded-lg"
-            >
-              <div
-                class="carousel-track flex transition-transform duration-500 ease-in-out"
-                data-index="0"
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1501973801540-537f08ccae7b?auto=format&fit=crop&w=800&q=80"
-                  class="w-96 h-80 object-cover flex-shrink-0"
-                />
-                <img
-                  src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80"
-                  class="w-96 h-80 object-cover flex-shrink-0"
-                />
-                <img
-                  src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=800&q=80"
-                  class="w-96 h-80 object-cover flex-shrink-0"
-                />
-              </div>
-            </div>
-            <button
-              onclick="moveSlide('carousel4', -1)"
-              class="absolute left-5 top-1/2 -translate-y-1/2 rounded-full bg-white shadow-md hover:bg-yellow-500 hover:text-white p-2"
-            >
-              ‹
-            </button>
-            <button
-              onclick="moveSlide('carousel4', 1)"
-              class="absolute right-5 top-1/2 -translate-y-1/2 rounded-full bg-white shadow-md hover:bg-yellow-500 hover:text-white p-2"
-            >
-              ›
-            </button>
-          </div>
-          <div class="px-4 py-3 text-gray-700 text-sm">
-            <span class="font-semibold">Alex Chen</span> Mumbai meri jaan 🌇
-          </div>
-          <div
-            class="flex items-center justify-between px-4 py-3 border-t border-gray-100"
-          >
-            <div class="flex gap-6">
-              <button
-                class="flex items-center gap-2 text-gray-600 hover:text-red-500"
-              >
-                ❤️ Like
-              </button>
-              <button
-                class="flex items-center gap-2 text-gray-600 hover:text-blue-500"
-              >
-                💬 Comment
-              </button>
-              <button
-                class="flex items-center gap-2 text-gray-600 hover:text-green-500"
-              >
-                🔗 Share
-              </button>
-            </div>
-          </div>
-        </div>
+        
 
         <!-- ===== POST 5 ===== -->
-        <div
-          class="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100"
-        >
-          <div class="flex items-center p-4">
-            <img
-              src="https://randomuser.me/api/portraits/women/12.jpg"
-              class="w-12 h-12 rounded-full border-2 border-purple-400"
-            />
-            <div class="ml-3">
-              <div class="font-semibold text-gray-900">Sarah Johnson</div>
-              <div class="text-xs text-gray-500">6h ago</div>
+        <div class="bg-black rounded-2xl shadow-lg overflow-hidden border border-gray-100 max-w-md mx-auto my-8" data-post-id="101">
+          <div class="flex items-center gap-3 px-5 pt-5 pb-2">
+            <img src="https://randomuser.me/api/portraits/women/22.jpg" class="w-12 h-12 rounded-full border-2 border-purple-400 object-cover" alt="Ella Thompson"/>
+            <div>
+              <div class="font-semibold text-white">Ella Thompson</div>
+              <div class="text-xs text-gray-400">3h ago</div>
             </div>
           </div>
-          <div class="px-4 pb-3 text-gray-800 text-[15px]">
-            Coffee and books 📚☕ at my favorite
-            <span class="font-semibold text-purple-600">book café</span>.
+          <div class="px-5 pb-2 text-white text-[15px]">
+            Couldn't get enough of the colors at <span class="font-semibold text-purple-400">Iceland's waterfalls</span> 🌈💧!
           </div>
-          <div class="relative flex justify-center">
-            <div
-              id="carousel5"
-              class="relative w-96 h-80 overflow-hidden rounded-lg"
-            >
-              <div
-                class="carousel-track flex transition-transform duration-500 ease-in-out"
-                data-index="0"
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=800&q=80"
-                  class="w-96 h-80 object-cover flex-shrink-0"
-                />
-                <img
-                  src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80"
-                  class="w-96 h-80 object-cover flex-shrink-0"
-                />
-                <img
-                  src="https://images.unsplash.com/photo-1501973801540-537f08ccae7b?auto=format&fit=crop&w=800&q=80"
-                  class="w-96 h-80 object-cover flex-shrink-0"
-                />
+          <div class="relative flex justify-center pb-2">
+            <div id="carousel101" class="relative w-full max-w-lg h-72 overflow-hidden rounded-lg bg-black">
+              <div class="carousel-track flex transition-transform duration-300 ease-in-out" data-index="0">
+                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" class="w-full h-72 object-cover flex-shrink-0" />
+                <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80" class="w-full h-72 object-cover flex-shrink-0" />
+              </div>
+              <button onclick="moveSlide('carousel101', -1)" class="absolute left-2 top-1/2 -translate-y-1/2 z-10 text-2xl text-white hover:text-purple-400" style="background: none; border: none;">‹</button>
+              <button onclick="moveSlide('carousel101', 1)" class="absolute right-2 top-1/2 -translate-y-1/2 z-10 text-2xl text-white hover:text-purple-400" style="background: none; border: none;">›</button>
+            </div>
+          </div>
+          <div class="px-5 pt-1 pb-2 text-gray-300 text-sm">
+            <span class="font-semibold text-purple-300">Ella</span> Nature lover.
+          </div>
+          <div class="px-5 pt-2 pb-2 border-t border-gray-800">
+            <div class="flex items-center justify-between">
+              <div class="flex gap-6">
+                <button class="like-btn flex items-center gap-1 text-white text-base hover:text-blue-400">❤️ <span class="like-count">0</span></button>
+                <button class="comment-btn flex items-center gap-1 text-white text-base hover:text-blue-400">💬 Comment</button>
+                <button class="share-btn flex items-center gap-1 text-white text-base hover:text-green-400">🔗 Share</button>
               </div>
             </div>
-            <button
-              onclick="moveSlide('carousel5', -1)"
-              class="absolute left-5 top-1/2 -translate-y-1/2 rounded-full bg-white shadow-md hover:bg-purple-500 hover:text-white p-2"
-            >
-              ‹
-            </button>
-            <button
-              onclick="moveSlide('carousel5', 1)"
-              class="absolute right-5 top-1/2 -translate-y-1/2 rounded-full bg-white shadow-md hover:bg-purple-500 hover:text-white p-2"
-            >
-              ›
-            </button>
+            <form class="comment-form flex gap-2 mt-2 hidden">
+              <input class="comment-input border bg-black text-white border-gray-700 rounded px-2 py-1 flex-1" placeholder="Write a comment...">
+              <button type="submit" class="bg-blue-500 text-white rounded px-3 py-1">Post</button>
+            </form>
+            <div class="comments space-y-1 mt-2 text-white text-base"></div>
           </div>
-          <div class="px-4 py-3 text-gray-700 text-sm">
-            <span class="font-semibold">Sarah Johnson</span> Café vibes and cozy
-            reads ☕📖
-          </div>
-          <div
-            class="flex items-center justify-between px-4 py-3 border-t border-gray-100"
-          >
-            <div class="flex gap-6">
-              <button
-                class="flex items-center gap-2 text-gray-600 hover:text-red-500"
-              >
-                ❤️ Like
-              </button>
-              <button
-                class="flex items-center gap-2 text-gray-600 hover:text-blue-500"
-              >
-                💬 Comment
-              </button>
-              <button
-                class="flex items-center gap-2 text-gray-600 hover:text-green-500"
-              >
-                🔗 Share
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
+        
       <script>
         function moveSlide(carouselId, direction) {
           const carousel = document.querySelector(
@@ -1244,6 +996,7 @@
         }
       </script>
     </main>
+    
     <!-- ✅ Right Sidebar Activity Section (Dark Mode Style) -->
     <div
       class="w-auto bg-black p-5 h-screen overflow-y-auto border-l border-gray-800 hidden lg:block"
@@ -1265,7 +1018,7 @@
 
       <!-- Notifications -->
       <div class="mb-8">
-        <h3 class="text-sm font-medium text-gray-400 mb-3">Notifications</h3>
+        <h3 class="text-sm font-medium text-gray-400 mb-3 " data-id="N4">Notifications</h3>
         <div class="space-y-4">
           <div class="flex items-center gap-3">
             <img
@@ -1300,7 +1053,7 @@
 
       <!-- Requests -->
       <div class="mb-8">
-        <h3 class="text-sm font-medium text-gray-400 mb-3">Requests</h3>
+        <h3 class="text-sm font-medium text-gray-400 mb-3" data-id="N2">Requests</h3>
         <div class="space-y-4">
           <div class="flex items-center justify-between">
             <div class="flex items-center gap-3">
@@ -1309,10 +1062,10 @@
                 class="w-10 h-10 rounded-full border border-gray-700"
               />
               <p class="text-sm text-white">
-                <span class="font-semibold">Ash</span> sent a match request 💌
+                <span class="font-semibold" data-id="N3">Ash</span> sent a match request 💌
               </p>
             </div>
-            <div class="flex gap-2">
+            <div class="flex gap-2" data-id="N1">
               <button
                 class="px-3 py-1 rounded-lg bg-pink-600 text-white text-xs hover:bg-pink-700"
               >
@@ -1325,7 +1078,7 @@
               </button>
             </div>
           </div>
-          <div class="flex items-center justify-between">
+          <div class="flex items-center justify-between" data-id="N1"> 
             <div class="flex items-center gap-3">
               <img
                 src="https://randomuser.me/api/portraits/women/45.jpg"
@@ -1353,9 +1106,9 @@
 
       <!-- Matches -->
       <div>
-        <h3 class="text-sm font-medium text-gray-400 mb-3">Matches</h3>
+        <h3 class="text-sm font-medium text-gray-400 mb-3" data-id="N5">Matches</h3>
         <div class="space-y-4">
-          <div class="flex items-center gap-3">
+          <div class="flex items-center gap-3" data-id="N6">
             <img
               src="https://randomuser.me/api/portraits/women/33.jpg"
               class="w-10 h-10 rounded-full border border-gray-700"
@@ -1376,5 +1129,8 @@
         </div>
       </div>
     </div>
+      <!-- <div id="posts"></div> -->
+      <script src="landing.js"></script>  
+    <script src="noti.js"></script>
   </body>
 </html>
